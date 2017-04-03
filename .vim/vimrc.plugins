@@ -1,0 +1,346 @@
+
+" plugins/10-init/files -------------------
+
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('Shougo/unite.vim')
+
+" plugins/20-settings/files -------------------
+
+let mapleader = ","
+let maplocalleader = "\\"
+
+" plugins/30-general/plugins/airline/files -------------------
+
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+
+let g:airline_powerline_fonts=1
+let g:airline_theme='light' " dark simple badwolf solarized solarized2
+set noshowmode
+
+" plugins/30-general/plugins/greplace/files -------------------
+
+call dein#add('greplace.vim')
+
+" plugins/30-general/plugins/gundo/files -------------------
+
+call dein#add('sjl/gundo.vim')
+
+let g:gundo_close_on_revert = 1
+
+nmap <leader>u :GundoToggle<CR>
+
+" plugins/30-general/plugins/indent/lines -------------------
+
+call dein#add('Yggdroot/indentLine')
+
+" plugins/30-general/plugins/nerdtools/plugins/nerdtree/files -------------------
+
+call dein#add('scrooloose/nerdtree')
+
+" Tells the NERD tree to respect 'wildignore'.
+let NERDTreeRespectWildIgnore=1
+
+" plugins/30-general/plugins/nerdtools/plugins/nerdtree/plugins/10-nerdtree-git/files -------------------
+
+call dein#add('Xuyuanp/nerdtree-git-plugin')
+
+" plugins/30-general/plugins/nerdtools/plugins/nerdtree/plugins/20-nerdtree-tabs/files -------------------
+
+call dein#add('jistr/vim-nerdtree-tabs')
+
+" nerdtree with tqbs
+" Ctrl-P to Display the file browser tree
+nmap <C-P> :NERDTreeTabsToggle<CR>
+" ,p to show current file in the tree
+nmap <leader>p :NERDTreeFind<CR>
+
+" plugins/30-general/plugins/nerdtools/plugins/netdcommenter/files -------------------
+
+call dein#add('scrooloose/nerdcommenter')
+
+" ,/ to invert comment on the current line/selection
+nmap <leader>/ :call NERDComment(0, "invert")<cr>
+vmap <leader>/ :call NERDComment(0, "invert")<cr>
+
+" plugins/30-general/plugins/repeat/files -------------------
+
+" replacement for the repeat mapping (.) to support plugins
+call dein#add('tpope/vim-repeat')
+
+" plugins/30-general/plugins/session/files -------------------
+
+call dein#add('xolox/vim-misc')
+call dein#add('xolox/vim-session')
+
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
+nmap <leader>SS :SaveSession
+nmap <leader>SO :OpenSession
+if has('gui_running')
+  nmap <leader>SR :RestartVim<CR>
+endif
+
+" plugins/30-general/plugins/switch/files -------------------
+
+call dein#add('AndrewRadev/switch.vim')
+
+" making some of the switches defined for ruby work in HAML files
+autocmd FileType haml let b:switch_definitions =
+      \ [
+      \   g:switch_builtins.ruby_hash_style,
+      \   g:switch_builtins.ruby_string,
+      \   g:switch_builtins.true_false,
+      \   g:switch_builtins.true_false,
+      \ ]
+
+nnoremap ` :Switch<cr>
+
+" plugins/30-general/plugins/utl/files -------------------
+
+call dein#add('utl.vim')
+
+" config help: <url:~/.vim/dein/.dein/plugin/utl_rc.vim#r=utl_cfg_hdl_scm_http>
+if has("mac")
+  let g:utl_cfg_hdl_scm_http_system = "!open '%u'"
+end
+
+nmap <leader>o :Utl <space>
+
+" plugins/30-general/plugins/xterm-color-table/files -------------------
+
+call dein#add('guns/xterm-color-table.vim')
+
+" plugins/40-completion/plugins/10-youcompleteme/files -------------------
+
+call dein#add('Valloric/YouCompleteMe', {'build': './install.py --clang-completer --tern-completer'})
+
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+
+let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>', '<Up>']
+
+" plugins/40-completion/plugins/20-snippets/files -------------------
+
+call dein#add('ervandew/supertab')
+call dein#add('honza/vim-snippets')
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" plugins/50-fuzzy-tools/plugins/00-unite/files -------------------
+
+call dein#add('Shougo/unite-outline')
+call dein#add('Shougo/neoyank.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('tsukkee/unite-tag')
+
+if executable('ag')
+  let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '-g', '']
+endif
+
+nmap <leader>O :Unite -start-insert -no-split -buffer-name=Outline outline<cr>
+
+" plugins/50-fuzzy-tools/plugins/00-unite/plugins/10-unite-colorscheme/files -------------------
+
+call dein#add('ujihisa/unite-colorscheme')
+
+command! THEME Unite -no-start-insert -auto-preview colorscheme
+
+" plugins/50-fuzzy-tools/plugins/01-ctrlp/files -------------------
+
+call dein#add('ctrlpvim/ctrlp.vim')
+
+let g:ctrlp_clear_cache_on_exit = 1
+
+let g:ctrlp_max_height = 20
+
+" jump to buffer in the same tab if already open
+let g:ctrlp_switch_buffer = 0
+
+" if in git repo - use git file listing command, should be faster
+" using this option overrides standard CtrlP ignore list based on vim wildignore
+" so use 'grep -v ...' to exclude common image and font files from the search
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard -cod | grep -viE "\.(png|gif|jpg|gz|woff|eot|tiff|ttf|otf)$"']
+
+" open multiple files with <c-z> to mark and <c-o> to open. v - opening in
+" vertical splits; j - jump to first open buffer; r - open first in current buffer
+let g:ctrlp_open_multiple_files = 'hjr'
+
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
+
+let g:ctrlp_working_path_mode = 'ra'
+
+" prevent CtrlP from adding the default map
+let g:ctrlp_map = ''
+
+" plugins/50-fuzzy-tools/plugins/02-fzf/files -------------------
+
+call dein#add('junegunn/fzf.vim')
+
+if executable("ag") && ('' == $FZF_DEFAULT_COMMAND)
+  let $FZF_DEFAULT_COMMAND = "ag --follow --nocolor --nogroup -g ''"
+endif
+
+" plugins/50-fuzzy-tools/plugins/02-fzf/install.sh -------------------
+
+set rtp+=/usr/local/opt/fzf/
+
+" plugins/50-fuzzy-tools/plugins/10-fuzzy-files/fzf -------------------
+
+nmap <leader>, :Files<cr>
+
+
+" plugins/50-fuzzy-tools/plugins/20-fuzzy-buffers/unite -------------------
+
+nmap <leader>b :Unite -start-insert -no-split -buffer-name=buffer buffer<cr>
+
+" plugins/50-fuzzy-tools/plugins/30-fuzzy-quickfix/unite -------------------
+
+call dein#add('osyo-manga/unite-quickfix')
+
+nmap <leader>q :Unite -start-insert -no-split -buffer-name=QuickFix quickfix<cr>
+
+" plugins/50-fuzzy-tools/plugins/40-ag/files -------------------
+
+nmap <leader>k :Ag<space>
+
+" plugins/50-fuzzy-tools/plugins/40-fuzzy-lines/fzf -------------------
+
+nmap <leader>l :Lines<cr>
+
+" plugins/50-fuzzy-tools/plugins/50-fuzzy-tags/fzf -------------------
+
+nmap <leader>t :Tags<cr>
+nmap <localleader>t :BTags<cr>
+
+" plugins/50-fuzzy-tools/plugins/60-fuzzy-yank/yankring -------------------
+
+call dein#add('YankRing.vim')
+
+let g:yankring_replace_n_pkey = '<leader>['
+let g:yankring_replace_n_nkey = '<leader>]'
+
+" put the yankring_history file in ~/.backup
+let g:yankring_history_dir = expand('~/.backup')
+
+let g:yankring_max_history = 1000
+
+" ,y to show the yankring
+nmap <leader>y :YRShow<cr>
+
+let g:yankring_window_height = 20
+
+" plugins/70-languages/plugins/dockefile/files -------------------
+
+call dein#add('ekalinin/Dockerfile.vim')
+
+" plugins/70-languages/plugins/html/plugins/emmet/files -------------------
+
+call dein#add('mattn/emmet-vim')
+
+" plugins/70-languages/plugins/javascript/files -------------------
+
+call dein#add('pangloss/vim-javascript')
+call dein#add('mxw/vim-jsx')
+call dein#add('mmalecki/vim-node.js')
+
+" plugins/70-languages/plugins/json/files -------------------
+
+call dein#add('elzr/vim-json')
+
+" plugins/70-languages/plugins/markdown/files -------------------
+
+call dein#add('tpope/vim-markdown')
+
+" plugins/70-languages/plugins/raml/files -------------------
+
+call dein#add('in3d/vim-raml')
+
+" plugins/70-languages/plugins/ruby/files -------------------
+
+" Ruby syntax support
+call dein#add('vim-ruby/vim-ruby')
+
+" A custom text object for selecting ruby blocks (ar/ir)
+call dein#add('kana/vim-textobj-user')
+call dein#add('nelstrom/vim-textobj-rubyblock')
+
+" toggle ruby blocks style
+call dein#add('vim-scripts/blockle.vim')
+
+" bundler integration (e.g. :Bopen)
+call dein#add('tpope/vim-bundler')
+
+" rake integration
+call dein#add('tpope/vim-rake')
+
+" ruby refactoring
+call dein#add('ecomba/vim-ruby-refactoring')
+
+let g:blockle_mapping = '<Leader>B'
+
+" plugins/70-languages/plugins/ruby/plugins/1-haml/files -------------------
+
+call dein#add('tpope/vim-haml')
+
+" plugins/70-languages/plugins/ruby/plugins/9-rails/files -------------------
+
+" Rails support
+call dein#add('tpope/vim-rails')
+
+" apidock.com docs integration
+call dein#add('apidock.vim')
+
+" lightweight Rspec runner for Vim
+call dein#add('thoughtbot/vim-rspec')
+
+" Rails i18n extraction plugin
+call dein#add('stefanoverna/vim-i18n')
+
+" vim-rspec
+map <Leader>r :call RunNearestSpec()<CR>
+
+" plugins/70-languages/plugins/tasks/files -------------------
+
+call dein#add('irrationalistic/vim-tasks')
+
+" plugins/70-languages/plugins/tmux/files -------------------
+
+call dein#add('tsaleh/vim-tmux')
+
+" plugins/70-languages/plugins/typescript/files -------------------
+
+call dein#add('leafgarland/typescript-vim')
+
+" plugins/80-color-themes/files -------------------
+
+call dein#add('altercation/vim-colors-solarized')
+call dein#add('chriskempson/tomorrow-theme', {'rtp': 'vim/'})
+call dein#add('tpope/vim-vividchalk')
+call dein#add('nanotech/jellybeans.vim')
+call dein#add('lifepillar/vim-solarized8')
+
+" plugins/99-final/plugins/10-local-configs/files -------------------
+
+if filereadable(expand("~/.vimrc.plugins"))
+    source ~/.vimrc.plugins
+endif
+
+" plugins/99-final/plugins/20-gvim-configs/files -------------------
+
+if has('gui_running')
+  source ~/.vim/gvimrc.plugins
+end

@@ -1,0 +1,6 @@
+
+" plugins/99-final/plugins/10-local-configs/files -------------------
+
+if filereadable(expand("~/.gvimrc.plugins"))
+    source ~/.gvimrc.plugins
+endif

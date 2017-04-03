@@ -1,0 +1,22 @@
+
+" plugins/20-settings/files -------------------
+
+" make Y consistent with C and D
+" must be in 'after' to prevent yankring overriding it
+nnoremap Y y$
+
+" plugins/50-fuzzy-tools/plugins/00-unite/files -------------------
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" plugins/99-final/plugins/10-local-configs/files -------------------
+
+if filereadable(expand("~/.vimrc.after"))
+    source ~/.vimrc.after
+endif
+
+" plugins/99-final/plugins/20-gvim-configs/files -------------------
+
+if has('gui_running')
+  source ~/.vim/gvimrc.after
+end
