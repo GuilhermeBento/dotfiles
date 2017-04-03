@@ -1,3 +1,7 @@
+[user]
+    email = guilherme.m.d.bento@gmail.com
+    name = Guilherme Bento
+
 [alias]
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -86,6 +90,7 @@
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
+  editor = /usr/bin/vim
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
 	# [default] trailing-space: looks for spaces at the end of a line
