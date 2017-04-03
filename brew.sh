@@ -7,6 +7,8 @@ brew update
 
 # Upgrade any already-installed formulae.
 brew upgrade
+# Extend brew with cask 
+brew tap caskroom/cask
 
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -104,5 +106,10 @@ brew install vbindiff
 brew install webkit2png
 brew install zopfli
 
+# Install usefull casks
+brew cask install google-chrome
+brew install brew-cask-completion
+
 # Remove outdated versions from the cellar.
 brew cleanup
+
