@@ -116,7 +116,7 @@ brew cask install google-chrome
 brew install brew-cask-completion
 
 # keyboard configs
-brew install seil
+# brew install seil
 # Remove outdated versions from the cellar.
 brew cleanup
 
