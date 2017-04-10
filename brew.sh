@@ -15,6 +15,9 @@ brew cask install spectacle
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
+# Install boost c++ Libraries
+# Required for compiling Karabiner-Elements
+brew insatall boost
 
 # Install some other useful utilities like `sponge`.
 brew install moreutils
