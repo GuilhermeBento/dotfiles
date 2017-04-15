@@ -10,6 +10,10 @@ call dein#add('Shougo/unite.vim')
 let mapleader = ","
 let maplocalleader = "\\"
 
+" plugins/craigemery/vim-autotag
+
+call dein#add('craigemery/vim-autotag')
+ 
 " plugins/30-general/plugins/airline/files -------------------
 
 call dein#add('vim-airline/vim-airline')

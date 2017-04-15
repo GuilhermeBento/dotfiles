@@ -111,6 +111,9 @@ brew install vbindiff
 brew install webkit2png
 brew install zopfli
 
+# Install ctags
+brew install ctags
+
 # Install usefull casks
 brew cask install google-chrome
 brew install brew-cask-completion
