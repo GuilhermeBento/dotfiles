@@ -6,7 +6,7 @@
 
 ### Using Git and the sync script
 
-You can clone the repository wherever you want. The bootstrapper script will pull in the latest version and copy the files to your home folder.
+You can clone the repository wherever you want. The sync script will pull in the latest version and copy the files to your home folder.
 
 ### Sensible macOS defaults
 
