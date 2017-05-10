@@ -47,7 +47,7 @@ set visualbell          " use visual bell instead of beeping
 set laststatus=2        " always show the status line
 " set listchars=tab:▷⋅,trail:·,eol:$
 " set listchars=tab:▷⋅,trail:·
-set list
+" set list
 
 " highlight spell errors
 hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
