@@ -318,6 +318,9 @@ let g:blockle_mapping = '<Leader>B'
 
 " vim-rspec
 " map <Leader>r :call RunNearestSpec()<CR>
+" 
+" GOLANG support
+call dein#add('fatih/vim-go')
 
 " plugins/70-languages/plugins/tasks/files -------------------
 
