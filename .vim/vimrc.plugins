@@ -13,6 +13,10 @@ let maplocalleader = "\\"
 " plugins/craigemery/vim-autotag
 
 call dein#add('craigemery/vim-autotag')
+
+" plugins/terryma/vim-multiple-cursors
+
+call dein#add('terryma/vim-multiple-cursors')
  
 " plugins/30-general/plugins/airline/files -------------------
 

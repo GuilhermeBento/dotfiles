@@ -116,6 +116,9 @@ set conceallevel=2
 " extended '%' mapping for if/then/else/end etc
 runtime macros/matchit.vim
 
+" search for visually hightlighted text
+vnoremap <c-f> y<ESC>/<c-r>"<CR>
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -347,10 +350,6 @@ function! SyntaxCheckers_javascript_jsxhint_GetLocList() dict " {{{1
         \ 'errorformat': errorformat,
         \ 'defaults': {'bufnr': bufnr('')} })
 endfunction " }}}1
-
-call g:SyntasticRegistry.CreateAndRegisterChecker({
-    \ 'filetype': 'javascript',
-    \ 'name': 'jsxhint'})
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
