@@ -54,6 +54,9 @@ let NERDTreeRespectWildIgnore=1
 
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 
+" signify
+call dein#add('mhinz/vim-signify') 
+
 " plugins/30-general/plugins/nerdtools/plugins/nerdtree/plugins/20-nerdtree-tabs/files -------------------
 
 call dein#add('jistr/vim-nerdtree-tabs')
@@ -338,6 +341,9 @@ call dein#add('tsaleh/vim-tmux')
 
 call dein#add('leafgarland/typescript-vim')
 
+" plugin/vim-surround ---------
+call dein#add('tpope/vim-surround')
+
 " plugins/80-color-themes/files -------------------
 
 call dein#add('altercation/vim-colors-solarized')
@@ -345,6 +351,7 @@ call dein#add('chriskempson/tomorrow-theme', {'rtp': 'vim/'})
 call dein#add('tpope/vim-vividchalk')
 call dein#add('nanotech/jellybeans.vim')
 call dein#add('lifepillar/vim-solarized8')
+
 
 " plugins/99-final/plugins/10-local-configs/files -------------------
 

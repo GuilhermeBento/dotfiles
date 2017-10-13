@@ -117,7 +117,7 @@ set conceallevel=2
 runtime macros/matchit.vim
 
 " search for visually hightlighted text
-vnoremap <c-f> y<ESC>/<c-r>"<CR>
+vnoremap <c-f> y<ESC>/<c-r>"<CR>  
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -138,6 +138,7 @@ map! <S-Insert> <MiddleMouse>
 " ,n to get the next location (compilation errors, grep etc)
 nmap <leader>n :cn<CR>
 nmap <leader>N :cp<CR>
+
 
 " ,d to diffupdate
 nmap <leader>d :diffupdate<CR>
