@@ -267,8 +267,6 @@ call dein#add('mattn/emmet-vim')
 call dein#add('pangloss/vim-javascript')
 call dein#add('mxw/vim-jsx')
 call dein#add('mmalecki/vim-node.js')
-" Accept js files as jsx at all times
-let g:jsx_ext_required = 0
 
 " plugins/70-languages/plugins/json/files -------------------
 
