@@ -17,6 +17,9 @@ alias g="git"
 alias h="history"
 alias j="jobs"
 
+# Path shortucts
+alias backoffice="~/svn/be/trunk/backoffice"
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"

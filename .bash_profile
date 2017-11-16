@@ -1,8 +1,11 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
+
 # Add GOPATH
-export GOPATH="$HOME/go";
-export PATH="$GOPATH/bin:$PATH";
+export GOPATH="/Users/guilherme/svn/be/trunk/go";
+export GOROOT="/usr/local/go"
+# export GOPATH=/Users/guilherme/svn/be/trunk/go/src/vendor:$GOPATH;
+export PATH="$GOROOT/bin:$PATH";
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.

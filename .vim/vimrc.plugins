@@ -14,6 +14,10 @@ let maplocalleader = "\\"
 
 call dein#add('craigemery/vim-autotag')
 
+" plugins/jiangmiao/auto-pairs
+
+call dein#add('jiangmiao/auto-pairs')
+
 " plugins/terryma/vim-multiple-cursors
 
 call dein#add('terryma/vim-multiple-cursors')
@@ -126,7 +130,7 @@ call dein#add('guns/xterm-color-table.vim')
 
 " plugins/40-completion/plugins/10-youcompleteme/files -------------------
 
-call dein#add('Valloric/YouCompleteMe', {'build': './install.py --clang-completer --tern-completer'})
+call dein#add('Valloric/YouCompleteMe', {'build': './install.py --go-completer --js-completer --clang-completer --tern-completer'})
 
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_add_preview_to_completeopt = 1
@@ -202,8 +206,16 @@ let g:ctrlp_map = ''
 call dein#add('junegunn/fzf.vim')
 
 if executable("ag") && ('' == $FZF_DEFAULT_COMMAND)
-  let $FZF_DEFAULT_COMMAND = "ag --follow --nocolor --nogroup -g ''"
+  let $FZF_DEFAULT_COMMAND = "fd --type f --hidden --follow"
 endif
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
 
 " plugins/50-fuzzy-tools/plugins/02-fzf/install.sh -------------------
 

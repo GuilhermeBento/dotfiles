@@ -55,7 +55,7 @@ hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 " behavior
                         " ignore these files when completing names and in
                         " explorer
-set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,node_modules,build,coverage
 set shell=/bin/bash     " use bash for shell commands
 set autowriteall        " Automatically save before commands like :next and :make
 set hidden              " enable multiple modified buffers
@@ -264,6 +264,9 @@ let g:indentLine_conceallevel = &conceallevel
 " plugins/70-languages/plugins/json/plugins/noconceal/files -------------------
 
 let g:vim_json_syntax_conceal = 0
+
+" plugins/NerdTree
+let NERDTreeShowHidden=1
 
 " Use the Solarized Dark theme
 set background=dark
