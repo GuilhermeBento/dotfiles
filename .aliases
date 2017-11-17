@@ -16,6 +16,7 @@ alias p="cd ~/projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
+alias top="top -o cpu"
 
 # Path shortucts
 alias backoffice="~/svn/be/trunk/backoffice"

@@ -205,9 +205,9 @@ let g:ctrlp_map = ''
 
 call dein#add('junegunn/fzf.vim')
 
-if executable("ag") && ('' == $FZF_DEFAULT_COMMAND)
+"if executable("ag") && ('' == $FZF_DEFAULT_COMMAND)
   let $FZF_DEFAULT_COMMAND = "fd --type f --hidden --follow"
-endif
+"endif
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 

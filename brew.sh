@@ -113,6 +113,8 @@ brew install zopfli
 
 # Install ctags
 brew install ctags
+# Faster alternative to find, and supports .gitignore
+brew install fd
 
 # Install usefull casks
 brew cask install google-chrome
