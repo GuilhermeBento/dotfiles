@@ -20,6 +20,7 @@ alias top="top -o cpu"
 
 # Path shortucts
 alias backoffice="~/svn/be/trunk/backoffice"
+alias go-svn="~/svn/be/trunk/go"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

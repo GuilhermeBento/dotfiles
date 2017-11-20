@@ -97,6 +97,10 @@ nmap <leader>SO :OpenSession
 if has('gui_running')
   nmap <leader>SR :RestartVim<CR>
 endif
+ 
+" plugins/xolox/vim-notes
+ 
+call dein#add('xolox/vim-notes')
 
 " plugins/30-general/plugins/switch/files -------------------
 
