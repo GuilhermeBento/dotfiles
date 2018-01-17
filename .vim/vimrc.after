@@ -14,9 +14,3 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 if filereadable(expand("~/.vimrc.after"))
     source ~/.vimrc.after
 endif
-
-" plugins/99-final/plugins/20-gvim-configs/files -------------------
-
-if has('gui_running')
-  source ~/.vim/gvimrc.after
-end

@@ -102,6 +102,9 @@ endif
  
 call dein#add('xolox/vim-notes')
 
+" Set notes store directories
+let g:notes_directories = ['~/Google Drive/vimNotes', '~/Documents/Notes']
+
 " plugins/30-general/plugins/switch/files -------------------
 
 call dein#add('AndrewRadev/switch.vim')
@@ -204,14 +207,17 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " prevent CtrlP from adding the default map
 let g:ctrlp_map = ''
+" 
+" plugins/50-fuzzy-tools/plugins/ag-------------------
+call dein#add('rking/ag.vim')
 
 " plugins/50-fuzzy-tools/plugins/02-fzf/files -------------------
 
 call dein#add('junegunn/fzf.vim')
 
-"if executable("ag") && ('' == $FZF_DEFAULT_COMMAND)
+if executable("ag") && ('' == $FZF_DEFAULT_COMMAND)
   let $FZF_DEFAULT_COMMAND = "fd --type f --hidden --follow"
-"endif
+endif
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
@@ -373,8 +379,3 @@ if filereadable(expand("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
 endif
 
-" plugins/99-final/plugins/20-gvim-configs/files -------------------
-
-if has('gui_running')
-  source ~/.vim/gvimrc.plugins
-end
