@@ -2,16 +2,20 @@
 export PATH="$HOME/bin:$PATH";
 
 # Add GOPATH
+
 export GOPATH="/Users/guilherme/svn/be/trunk/go";
-export GOROOT="/usr/local/go"
+export GOROOT="/usr/local/Cellar/go/1.9.4/libexec"
+export DENV="local"
+export GAMECENTER="99"
 # export GOPATH=/Users/guilherme/svn/be/trunk/go/src/vendor:$GOPATH;
 export PATH="$GOROOT/bin:$PATH";
+export PATH="$GOPATH:$PATH";
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra,deploy_backoffice}; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 
@@ -58,3 +62,4 @@ source ~/.profile
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
