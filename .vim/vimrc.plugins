@@ -348,6 +348,8 @@ let g:blockle_mapping = '<Leader>B'
 " 
 " GOLANG support
 call dein#add('fatih/vim-go')
+call dein#add('Shougo/vimshell') " Dependecy of vim-delve ===DEPRECATED===
+call dein#add('sebdah/vim-delve')
 
 " plugins/70-languages/plugins/tasks/files -------------------
 
