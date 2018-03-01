@@ -41,3 +41,6 @@ set convert-meta off
 
 # Vi mode in Bash and any other tool that uses GNU Readline, such as the MySQL command line
 set editing-mode vi
+
+# Show bash mode in prompt for vim mode
+set show-mode-in-prompt on
