@@ -38,3 +38,6 @@ set convert-meta off
 
 # Use Alt/Meta + Delete to delete the preceding word
 "\e[3;3~": kill-word
+
+# Vi mode in Bash and any other tool that uses GNU Readline, such as the MySQL command line
+set editing-mode vi
