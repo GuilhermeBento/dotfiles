@@ -19,6 +19,9 @@ brew install coreutils
 # Required for compiling Karabiner-Elements
 brew insatall boost
 
+# Using the Mac OS X programs pbpaste and pbcopy under tmux does not work
+brew install reattach-to-user-namespace
+
 # Install some other useful utilities like `sponge`.
 brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
