@@ -327,7 +327,12 @@ set tabstop=2
 if exists('g:loaded_syntastic_javascript_jsxhint_checker')
     finish
 endif
+
 let g:loaded_syntastic_javascript_jsxhint_checker = 1
+
+" Set python path to youcompleteme Plugin
+
+let g:ycm_path_to_python_interpreter="/usr/bin/python"
 
 " Accept js files as jsx at all times
 let g:jsx_ext_required = 0
