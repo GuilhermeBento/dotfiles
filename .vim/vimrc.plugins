@@ -59,7 +59,7 @@ let NERDTreeRespectWildIgnore=1
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 
 " signify
-call dein#add('mhinz/vim-signify') 
+" call dein#add('mhinz/vim-signify') 
 
 " plugins/30-general/plugins/nerdtools/plugins/nerdtree/plugins/20-nerdtree-tabs/files -------------------
 
@@ -73,7 +73,7 @@ nmap <leader>p :NERDTreeFind<CR>
 
 " plugins/30-general/plugins/nerdtools/plugins/netdcommenter/files -------------------
 
-call dein#add('scrooloose/nerdcommenter')
+" call dein#add('scrooloose/nerdcommenter')
 
 " ,/ to invert comment on the current line/selection
 nmap <leader>/ :call NERDComment(0, "invert")<cr>
@@ -87,16 +87,16 @@ call dein#add('tpope/vim-repeat')
 " plugins/30-general/plugins/session/files -------------------
 
 call dein#add('xolox/vim-misc')
-call dein#add('xolox/vim-session')
+" call dein#add('xolox/vim-session')
 
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
+" let g:session_autosave = 'no'
+" let g:session_autoload = 'no'
 
-nmap <leader>SS :SaveSession
-nmap <leader>SO :OpenSession
-if has('gui_running')
-  nmap <leader>SR :RestartVim<CR>
-endif
+" nmap <leader>SS :SaveSession
+" nmap <leader>SO :OpenSession
+" if has('gui_running')
+"   nmap <leader>SR :RestartVim<CR>
+" endif
  
 " plugins/xolox/vim-notes
  
@@ -107,18 +107,18 @@ let g:notes_directories = ['~/Google Drive/vimNotes', '~/Documents/Notes']
 
 " plugins/30-general/plugins/switch/files -------------------
 
-call dein#add('AndrewRadev/switch.vim')
+" call dein#add('AndrewRadev/switch.vim')
 
 " making some of the switches defined for ruby work in HAML files
-autocmd FileType haml let b:switch_definitions =
-      \ [
-      \   g:switch_builtins.ruby_hash_style,
-      \   g:switch_builtins.ruby_string,
-      \   g:switch_builtins.true_false,
-      \   g:switch_builtins.true_false,
-      \ ]
+" autocmd FileType haml let b:switch_definitions =
+"       \ [
+"       \   g:switch_builtins.ruby_hash_style,
+"       \   g:switch_builtins.ruby_string,
+"       \   g:switch_builtins.true_false,
+"       \   g:switch_builtins.true_false,
+"       \ ]
 
-nnoremap ` :Switch<cr>
+" nnoremap ` :Switch<cr>
 
 " plugins/30-general/plugins/utl/files -------------------
 
@@ -137,7 +137,7 @@ call dein#add('guns/xterm-color-table.vim')
 
 " plugins/40-completion/plugins/10-youcompleteme/files -------------------
 
-call dein#add('Valloric/YouCompleteMe', {'build': './install.py --go-completer --js-completer --clang-completer --tern-completer'})
+call dein#add('Valloric/YouCompleteMe', {'build': './install.py --go-completer --js-completer  --tern-completer'})
 
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_add_preview_to_completeopt = 1
@@ -153,6 +153,8 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>', '<Up>']
 
 call dein#add('ervandew/supertab')
 call dein#add('honza/vim-snippets')
+call dein#add('epilande/vim-react-snippets')
+call dein#add('SirVer/ultisnips')
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -278,7 +280,7 @@ let g:yankring_window_height = 20
 
 " plugins/70-languages/plugins/dockefile/files -------------------
 
-call dein#add('ekalinin/Dockerfile.vim')
+" call dein#add('ekalinin/Dockerfile.vim')
 
 " plugins/70-languages/plugins/html/plugins/emmet/files -------------------
 
@@ -287,12 +289,14 @@ call dein#add('mattn/emmet-vim')
 " plugins/70-languages/plugins/javascript/files -------------------
 
 call dein#add('pangloss/vim-javascript')
+let g:javascript_plugin_jsdoc = 1
+
 call dein#add('mxw/vim-jsx')
-call dein#add('mmalecki/vim-node.js')
+" call dein#add('mmalecki/vim-node.js')
 
 " plugins/70-languages/plugins/json/files -------------------
 
-call dein#add('elzr/vim-json')
+" call dein#add('elzr/vim-json')
 
 " plugins/70-languages/plugins/markdown/files -------------------
 
@@ -300,12 +304,12 @@ call dein#add('tpope/vim-markdown')
 
 " plugins/70-languages/plugins/raml/files -------------------
 
-call dein#add('in3d/vim-raml')
+" call dein#add('in3d/vim-raml')
 
 " plugins/70-languages/plugins/ruby/files -------------------
 
 " Ruby syntax support
-call dein#add('vim-ruby/vim-ruby')
+" call dein#add('vim-ruby/vim-ruby')
 
 " A custom text object for selecting ruby blocks (ar/ir)
 " call dein#add('kana/vim-textobj-user')
@@ -350,10 +354,6 @@ let g:blockle_mapping = '<Leader>B'
 call dein#add('fatih/vim-go')
 call dein#add('sebdah/vim-delve')
 
-" plugins/70-languages/plugins/tasks/files -------------------
-
-call dein#add('irrationalistic/vim-tasks')
-
 " plugins/70-languages/plugins/tmux/files -------------------
 
 call dein#add('tsaleh/vim-tmux')
@@ -369,15 +369,6 @@ call dein#add('tpope/vim-surround')
 " Plugin tmux navigator 
 "
 call dein#add('christoomey/vim-tmux-navigator')
-
-" plugins/80-color-themes/files -------------------
-
-call dein#add('altercation/vim-colors-solarized')
-call dein#add('chriskempson/tomorrow-theme', {'rtp': 'vim/'})
-call dein#add('tpope/vim-vividchalk')
-call dein#add('nanotech/jellybeans.vim')
-call dein#add('lifepillar/vim-solarized8')
-
 
 " plugins/99-final/plugins/10-local-configs/files -------------------
 
