@@ -1,15 +1,18 @@
 
-" plugins/10-init/files -------------------
-
-set nocompatible
+if &compatible
+  set nocompatible
+endif
 
 set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.vim/dein'))
+call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+call dein#add('Shougo/deoplete.nvim')
 
 source ~/.vim/vimrc.plugins
 
 call dein#end()
+call dein#save_state()
 
 filetype plugin indent on
 
@@ -20,7 +23,7 @@ endif
 
 " plugins/20-settings/files -------------------
 
-syntax on
+syntax enable 
 
 " prevent vim from adding that stupid empty line at the end of every file
 set noeol
@@ -317,17 +320,12 @@ set number
 " Enable syntax highlighting
 syntax on
 " Highlight current line
-set cursorline
+set nocursorline
 " Make tabs as wide as two spaces
 set tabstop=2
 " Show “invisible” characters
 " set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 " 
-" Set linter configs
-if exists('g:loaded_syntastic_javascript_jsxhint_checker')
-    finish
-endif
-
 let g:loaded_syntastic_javascript_jsxhint_checker = 1
 
 " Set python path to youcompleteme Plugin
@@ -336,40 +334,5 @@ let g:ycm_path_to_python_interpreter="/usr/bin/python"
 
 " Accept js files as jsx at all times
 let g:jsx_ext_required = 0
-
-let s:save_cpo = &cpo
-set cpo&vim
-
-function! SyntaxCheckers_javascript_jsxhint_IsAvailable() dict " {{{1
-    if !executable(self.getExec())
-        return 0
-    endif
-
-    let version_output = syntastic#util#system(self.getExecEscaped() . ' --version')
-    let parsed_ver = !v:shell_error && (version_output =~# '\m^JSXHint\>') ? syntastic#util#parseVersion(version_output) : []
-    if len(parsed_ver)
-        call self.setVersion(parsed_ver)
-    else
-        call syntastic#log#ndebug(g:_SYNTASTIC_DEBUG_LOCLIST, 'checker output:', split(version_output, "\n", 1))
-        call syntastic#log#error("checker javascript/jsxhint: can't parse version string (abnormal termination?)")
-    endif
-
-    return syntastic#util#versionIsAtLeast(parsed_ver, [0, 4, 1])
-endfunction " }}}1
-
-function! SyntaxCheckers_javascript_jsxhint_GetLocList() dict " {{{1
-    let makeprg = self.makeprgBuild({
-        \ 'args_after': '--verbose' })
-
-    let errorformat = '%A%f: line %l\, col %v\, %m \(%t%*\d\)'
-
-    return SyntasticMake({
-        \ 'makeprg': makeprg,
-        \ 'errorformat': errorformat,
-        \ 'defaults': {'bufnr': bufnr('')} })
-endfunction " }}}1
-
-let &cpo = s:save_cpo
-unlet s:save_cpo
 
 " vim: set sw=4 sts=4 et fdm=marker:

@@ -7,7 +7,7 @@ nnoremap Y y$
 
 " plugins/50-fuzzy-tools/plugins/00-unite/files -------------------
 
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 " plugins/99-final/plugins/10-local-configs/files -------------------
 

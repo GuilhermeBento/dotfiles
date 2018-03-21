@@ -24,12 +24,12 @@ call dein#add('terryma/vim-multiple-cursors')
  
 " plugins/30-general/plugins/airline/files -------------------
 
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
+" call dein#add('vim-airline/vim-airline')
+" call dein#add('vim-airline/vim-airline-themes')
 
-let g:airline_powerline_fonts=1
-let g:airline_theme='light' " dark simple badwolf solarized solarized2
-set noshowmode
+" let g:airline_powerline_fonts=1
+" let g:airline_theme='light' " dark simple badwolf solarized solarized2
+" set noshowmode
 
 " plugins/30-general/plugins/greplace/files -------------------
 
@@ -133,7 +133,7 @@ nmap <leader>o :Utl <space>
 
 " plugins/30-general/plugins/xterm-color-table/files -------------------
 
-call dein#add('guns/xterm-color-table.vim')
+" call dein#add('guns/xterm-color-table.vim')
 
 " plugins/40-completion/plugins/10-youcompleteme/files -------------------
 
@@ -164,24 +164,11 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" plugins/50-fuzzy-tools/plugins/00-unite/files -------------------
-
-call dein#add('Shougo/unite-outline')
-call dein#add('Shougo/neoyank.vim')
-call dein#add('Shougo/neomru.vim')
-call dein#add('tsukkee/unite-tag')
-
 if executable('ag')
   let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '-g', '']
 endif
 
 nmap <leader>O :Unite -start-insert -no-split -buffer-name=Outline outline<cr>
-
-" plugins/50-fuzzy-tools/plugins/00-unite/plugins/10-unite-colorscheme/files -------------------
-
-call dein#add('ujihisa/unite-colorscheme')
-
-command! THEME Unite -no-start-insert -auto-preview colorscheme
 
 " plugins/50-fuzzy-tools/plugins/01-ctrlp/files -------------------
 
@@ -237,17 +224,6 @@ set rtp+=/usr/local/opt/fzf/
 
 nmap <leader>, :Files<cr>
 
-
-" plugins/50-fuzzy-tools/plugins/20-fuzzy-buffers/unite -------------------
-
-nmap <leader>b :Unite -start-insert -no-split -buffer-name=buffer buffer<cr>
-
-" plugins/50-fuzzy-tools/plugins/30-fuzzy-quickfix/unite -------------------
-
-call dein#add('osyo-manga/unite-quickfix')
-
-nmap <leader>q :Unite -start-insert -no-split -buffer-name=QuickFix quickfix<cr>
-
 " plugins/50-fuzzy-tools/plugins/40-ag/files -------------------
 
 nmap <leader>k :Ag<space>
@@ -261,44 +237,15 @@ nmap <leader>l :Lines<cr>
 nmap <leader>t :Tags<cr>
 nmap <localleader>t :BTags<cr>
 
-" plugins/50-fuzzy-tools/plugins/60-fuzzy-yank/yankring -------------------
-
-call dein#add('vim-scripts/YankRing.vim')
-
-let g:yankring_replace_n_pkey = '<leader>['
-let g:yankring_replace_n_nkey = '<leader>]'
-
-" put the yankring_history file in ~/.backup
-let g:yankring_history_dir = expand('~/.backup')
-
-let g:yankring_max_history = 1000
-
-" ,y to show the yankring
-nmap <leader>y :YRShow<cr>
-
-let g:yankring_window_height = 20
-
-" plugins/70-languages/plugins/dockefile/files -------------------
-
-" call dein#add('ekalinin/Dockerfile.vim')
-
-" plugins/70-languages/plugins/html/plugins/emmet/files -------------------
-
 call dein#add('mattn/emmet-vim')
 
 " plugins/70-languages/plugins/javascript/files -------------------
 
+call dein#add('w0rp/ale')
 call dein#add('pangloss/vim-javascript')
 let g:javascript_plugin_jsdoc = 1
 
 call dein#add('mxw/vim-jsx')
-" call dein#add('mmalecki/vim-node.js')
-
-" plugins/70-languages/plugins/json/files -------------------
-
-" call dein#add('elzr/vim-json')
-
-" plugins/70-languages/plugins/markdown/files -------------------
 
 call dein#add('tpope/vim-markdown')
 

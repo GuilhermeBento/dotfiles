@@ -1,0 +1,1590 @@
+FUNCTION  xolox#notes#filetype_is_note()
+Called 2 times
+Total time:   0.000060
+ Self time:   0.000060
+
+count  total (s)   self (s)
+                              " Check whether the given file type value refers to the notes.vim plug-in.
+    2              0.000051   return index(split(a:ft, '\.'), 'notes') >= 0
+
+FUNCTION  250()
+Called 2 times
+Total time:   0.000011
+ Self time:   0.000011
+
+count  total (s)   self (s)
+    2              0.000005     return self._showHelp
+
+FUNCTION  airline#statusline()
+Called 134 times
+Total time:   0.004313
+ Self time:   0.004313
+
+count  total (s)   self (s)
+  134              0.002015   if has_key(s:contexts, a:winnr)
+  134              0.001843     return '%{airline#check_mode('.a:winnr.')}'.s:contexts[a:winnr].line
+                              endif
+                            
+                              " in rare circumstances this happens...see #276
+                              return ''
+
+FUNCTION  airline#util#append()
+Called 924 times
+Total time:   0.016789
+ Self time:   0.016789
+
+count  total (s)   self (s)
+  924              0.006444   if a:minwidth > 0 && winwidth(0) < a:minwidth
+                                return ''
+                              endif
+  924              0.004099   let prefix = s:spc == "\ua0" ? s:spc : s:spc.s:spc
+  924              0.003546   return empty(a:text) ? '' : prefix.g:airline_left_alt_sep.s:spc.a:text
+
+FUNCTION  150()
+Called 14 times
+Total time:   0.000667
+ Self time:   0.000145
+
+count  total (s)   self (s)
+   14   0.000626   0.000104     if !self.isCascadable()
+   14              0.000028         return [self]
+                                endif
+                            
+                                let vc = self.getVisibleChildren()
+                                let visChild = vc[0]
+                            
+                                return [self] + visChild.getCascade()
+
+FUNCTION  <SNR>59_NERDTreeCacheDirtyDir()
+Called 4 times
+Total time:   0.000729
+ Self time:   0.000558
+
+count  total (s)   self (s)
+                                " cache dirty dir
+    4   0.000226   0.000055     let l:dirtyPath = s:NERDTreeTrimDoubleQuotes(a:pathStr)
+    4              0.000057     if l:dirtyPath =~# '\.\./.*'
+                                    return
+                                endif
+    4              0.000154     let l:dirtyPath = substitute(l:dirtyPath, '/[^/]*$', '/', '')
+    6              0.000159     while l:dirtyPath =~# '.\+/.*' && has_key(b:NERDTreeCachedGitDirtyDir, fnameescape(l:dirtyPath)) == 0
+    2              0.000013         let b:NERDTreeCachedGitDirtyDir[fnameescape(l:dirtyPath)] = 'Dirty'
+    2              0.000041         let l:dirtyPath = substitute(l:dirtyPath, '/[^/]*/$', '/', '')
+    2              0.000003     endwhile
+
+FUNCTION  NERDTreeGetGitStatusPrefix()
+Called 28 times
+Total time:   0.063180
+ Self time:   0.003613
+
+count  total (s)   self (s)
+   28              0.000168     if localtime() - s:GitStatusCacheTime > s:GitStatusCacheTimeExpiry
+    2              0.000017         let s:GitStatusCacheTime = localtime()
+    2   0.050126   0.000074         call g:NERDTreeGitStatusRefresh()
+    2              0.000008     endif
+   28   0.004693   0.000221     let l:pathStr = a:path.str()
+   28   0.004380   0.000306     let l:cwd = b:NERDTree.root.path.str() . a:path.Slash()
+   28   0.000359   0.000093     if nerdtree#runningWindows()
+                                    let l:pathStr = a:path.WinToUnixPath(l:pathStr)
+                                    let l:cwd = a:path.WinToUnixPath(l:cwd)
+                                endif
+   28              0.001541     let l:pathStr = substitute(l:pathStr, fnameescape(l:cwd), '', '')
+   28              0.000067     let l:statusKey = ''
+   28              0.000051     if a:path.isDirectory
+   16              0.000142         let l:statusKey = get(b:NERDTreeCachedGitDirtyDir, fnameescape(l:pathStr . '/'), '')
+   16              0.000013     else
+   12              0.000106         let l:statusKey = get(b:NERDTreeCachedGitFileStatus, fnameescape(l:pathStr), '')
+   12              0.000013     endif
+   28   0.000941   0.000238     return s:NERDTreeGetIndicator(l:statusKey)
+
+FUNCTION  <SNR>87_Highlight_Matching_Pair()
+Called 128 times
+Total time:   0.022712
+ Self time:   0.022712
+
+count  total (s)   self (s)
+                              " Remove any previous match.
+  128              0.001308   if exists('w:paren_hl_on') && w:paren_hl_on
+                                silent! call matchdelete(3)
+                                let w:paren_hl_on = 0
+                              endif
+                            
+                              " Avoid that we remove the popup menu.
+                              " Return when there are no colors (looks like the cursor jumps).
+  128              0.001024   if pumvisible() || (&t_Co < 8 && !has("gui_running"))
+                                return
+                              endif
+                            
+                              " Get the character under the cursor and check if it's in 'matchpairs'.
+  128              0.000674   let c_lnum = line('.')
+  128              0.000570   let c_col = col('.')
+  128              0.000216   let before = 0
+                            
+  128              0.000590   let text = getline(c_lnum)
+  128              0.003451   let matches = matchlist(text, '\(.\)\=\%'.c_col.'c\(.\=\)')
+  128              0.000505   if empty(matches)
+                                let [c_before, c] = ['', '']
+                              else
+  128              0.001247     let [c_before, c] = matches[1:2]
+  128              0.000140   endif
+  128              0.005568   let plist = split(&matchpairs, '.\zs[:,]')
+  128              0.000713   let i = index(plist, c)
+  128              0.000263   if i < 0
+                                " not found, in Insert mode try character before the cursor
+  128              0.000662     if c_col > 1 && (mode() == 'i' || mode() == 'R')
+                                  let before = strlen(c_before)
+                                  let c = c_before
+                                  let i = index(plist, c)
+                                endif
+  128              0.000180     if i < 0
+                                  " not found, nothing to do
+  128              0.000258       return
+                                endif
+                              endif
+                            
+                              " Figure out the arguments for searchpairpos().
+                              if i % 2 == 0
+                                let s_flags = 'nW'
+                                let c2 = plist[i + 1]
+                              else
+                                let s_flags = 'nbW'
+                                let c2 = c
+                                let c = plist[i - 1]
+                              endif
+                              if c == '['
+                                let c = '\['
+                                let c2 = '\]'
+                              endif
+                            
+                              " Find the match.  When it was just before the cursor move it there for a
+                              " moment.
+                              if before > 0
+                                let has_getcurpos = exists("*getcurpos")
+                                if has_getcurpos
+                                  " getcurpos() is more efficient but doesn't exist before 7.4.313.
+                                  let save_cursor = getcurpos()
+                                else
+                                  let save_cursor = winsaveview()
+                                endif
+                                call cursor(c_lnum, c_col - before)
+                              endif
+                            
+                              " Build an expression that detects whether the current cursor position is in
+                              " certain syntax types (string, comment, etc.), for use as searchpairpos()'s
+                              " skip argument.
+                              " We match "escape" for special items, such as lispEscapeSpecial.
+                              let s_skip = '!empty(filter(map(synstack(line("."), col(".")), ''synIDattr(v:val, "name")''), ' . '''v:val =~? "string\\|character\\|singlequote\\|escape\\|comment"''))'
+                              " If executing the expression determines that the cursor is currently in
+                              " one of the syntax types, then we want searchpairpos() to find the pair
+                              " within those syntax types (i.e., not skip).  Otherwise, the cursor is
+                              " outside of the syntax types and s_skip should keep its value so we skip any
+                              " matching pair inside the syntax types.
+                              execute 'if' s_skip '| let s_skip = 0 | endif'
+                            
+                              " Limit the search to lines visible in the window.
+                              let stoplinebottom = line('w$')
+                              let stoplinetop = line('w0')
+                              if i % 2 == 0
+                                let stopline = stoplinebottom
+                              else
+                                let stopline = stoplinetop
+                              endif
+                            
+                              " Limit the search time to 300 msec to avoid a hang on very long lines.
+                              " This fails when a timeout is not supported.
+                              if mode() == 'i' || mode() == 'R'
+                                let timeout = exists("b:matchparen_insert_timeout") ? b:matchparen_insert_timeout : g:matchparen_insert_timeout
+                              else
+                                let timeout = exists("b:matchparen_timeout") ? b:matchparen_timeout : g:matchparen_timeout
+                              endif
+                              try
+                                let [m_lnum, m_col] = searchpairpos(c, '', c2, s_flags, s_skip, stopline, timeout)
+                              catch /E118/
+                                " Can't use the timeout, restrict the stopline a bit more to avoid taking
+                                " a long time on closed folds and long lines.
+                                " The "viewable" variables give a range in which we can scroll while
+                                " keeping the cursor at the same position.
+                                " adjustedScrolloff accounts for very large numbers of scrolloff.
+                                let adjustedScrolloff = min([&scrolloff, (line('w$') - line('w0')) / 2])
+                                let bottom_viewable = min([line('$'), c_lnum + &lines - adjustedScrolloff - 2])
+                                let top_viewable = max([1, c_lnum-&lines+adjustedScrolloff + 2])
+                                " one of these stoplines will be adjusted below, but the current values are
+                                " minimal boundaries within the current window
+                                if i % 2 == 0
+                                  if has("byte_offset") && has("syntax_items") && &smc > 0
+                            	let stopbyte = min([line2byte("$"), line2byte(".") + col(".") + &smc * 2])
+                            	let stopline = min([bottom_viewable, byte2line(stopbyte)])
+                                  else
+                            	let stopline = min([bottom_viewable, c_lnum + 100])
+                                  endif
+                                  let stoplinebottom = stopline
+                                else
+                                  if has("byte_offset") && has("syntax_items") && &smc > 0
+                            	let stopbyte = max([1, line2byte(".") + col(".") - &smc * 2])
+                            	let stopline = max([top_viewable, byte2line(stopbyte)])
+                                  else
+                            	let stopline = max([top_viewable, c_lnum - 100])
+                                  endif
+                                  let stoplinetop = stopline
+                                endif
+                                let [m_lnum, m_col] = searchpairpos(c, '', c2, s_flags, s_skip, stopline)
+                              endtry
+                            
+                              if before > 0
+                                if has_getcurpos
+                                  call setpos('.', save_cursor)
+                                else
+                                  call winrestview(save_cursor)
+                                endif
+                              endif
+                            
+                              " If a match is found setup match highlighting.
+                              if m_lnum > 0 && m_lnum >= stoplinetop && m_lnum <= stoplinebottom 
+                                if exists('*matchaddpos')
+                                  call matchaddpos('MatchParen', [[c_lnum, c_col - before], [m_lnum, m_col]], 10, 3)
+                                else
+                                  exe '3match MatchParen /\(\%' . c_lnum . 'l\%' . (c_col - before) . 'c\)\|\(\%' . m_lnum . 'l\%' . m_col . 'c\)/'
+                                endif
+                                let w:paren_hl_on = 1
+                              endif
+
+FUNCTION  airline#parts#filetype()
+Called 132 times
+Total time:   0.001306
+ Self time:   0.001306
+
+count  total (s)   self (s)
+  132              0.001187   return winwidth(0) < 90 && strlen(&filetype) > 3 ? matchstr(&filetype, '...'). (&encoding is? 'utf-8' ? '…' : '>') : &filetype
+
+FUNCTION  airline#parts#iminsert()
+Called 132 times
+Total time:   0.001157
+ Self time:   0.001157
+
+count  total (s)   self (s)
+  132              0.000464   if g:airline_detect_iminsert && &iminsert && exists('b:keymap_name')
+                                return toupper(b:keymap_name)
+                              endif
+  132              0.000141   return ''
+
+FUNCTION  <SNR>108_ws_refresh()
+Called 2 times
+Total time:   0.000040
+ Self time:   0.000040
+
+count  total (s)   self (s)
+    2              0.000026   if get(b:, 'airline_ws_changedtick', 0) == b:changedtick
+    2              0.000005     return
+                              endif
+                              unlet! b:airline_whitespace_check
+                              if get(g:, 'airline_skip_empty_sections', 0)
+                                exe ':AirlineRefresh'
+                              endif
+                              let b:airline_ws_changedtick = b:changedtick
+
+FUNCTION  xolox#notes#refresh_syntax()
+Called 2 times
+Total time:   0.000258
+ Self time:   0.000198
+
+count  total (s)   self (s)
+                              " Update syntax highlighting of note names and code blocks.
+    2   0.000222   0.000162   if xolox#notes#filetype_is_note(&ft) && line('$') > 1
+                                let starttime = xolox#misc#timer#start()
+                                call xolox#notes#highlight_names(0)
+                                call xolox#notes#highlight_sources(0)
+                                call xolox#misc#timer#stop("notes.vim %s: Refreshed highlighting in %s.", g:xolox#notes#version, starttime)
+                              endif
+
+FUNCTION  16()
+Called 28 times
+Total time:   0.002267
+ Self time:   0.001460
+
+count  total (s)   self (s)
+   28   0.000750   0.000227     let self.cachedDisplayString = self.getLastPathComponent(1)
+                            
+   28              0.000037     if self.isExecutable
+                                    let self.cachedDisplayString = self.cachedDisplayString . '*'
+                                endif
+                            
+   28              0.000141     let self._bookmarkNames = []
+   28   0.000480   0.000196     for i in g:NERDTreeBookmark.Bookmarks()
+                                    if i.path.equals(self)
+                                        call add(self._bookmarkNames, i.name)
+                                    endif
+                                endfor
+   28              0.000118     if !empty(self._bookmarkNames) && g:NERDTreeMarkBookmarks == 1
+                                    let self.cachedDisplayString .= ' {' . join(self._bookmarkNames) . '}'
+                                endif
+                            
+   28              0.000040     if self.isSymLink
+                                    let self.cachedDisplayString .=  ' -> ' . self.symLinkDest
+                                endif
+                            
+   28              0.000034     if self.isReadOnly
+                                    let self.cachedDisplayString .=  ' ['.g:NERDTreeGlyphReadOnly.']'
+                                endif
+
+FUNCTION  25()
+Called 26 times
+Total time:   0.000278
+ Self time:   0.000278
+
+count  total (s)   self (s)
+   26              0.000072     if self.cachedDisplayString ==# ""
+                                    call self.cacheDisplayString()
+                                endif
+                            
+   26              0.000051     return self.cachedDisplayString
+
+FUNCTION  32()
+Called 80 times
+Total time:   0.001187
+ Self time:   0.001187
+
+count  total (s)   self (s)
+   80              0.000233     if empty(self.pathSegments)
+                                    return ''
+                                endif
+   80              0.000267     let toReturn = self.pathSegments[-1]
+   80              0.000138     if a:dirSlash && self.isDirectory
+   16              0.000048         let toReturn = toReturn . '/'
+   16              0.000016     endif
+   80              0.000097     return toReturn
+
+FUNCTION  38()
+Called 52 times
+Total time:   0.005650
+ Self time:   0.002602
+
+count  total (s)   self (s)
+                                "filter out the user specified paths to ignore
+   52   0.000374   0.000257     if a:nerdtree.ui.isIgnoreFilterEnabled()
+  104              0.000164         for i in g:NERDTreeIgnore
+   52   0.002607   0.000245             if self._ignorePatternMatches(i)
+                                            return 1
+                                        endif
+   52              0.000057         endfor
+                            
+   52   0.000620   0.000237         for callback in g:NERDTree.PathFilters()
+                                        if {callback}({'path': self, 'nerdtree': a:nerdtree})
+                                            return 1
+                                        endif
+                                    endfor
+   52              0.000041     endif
+                            
+                                "dont show hidden files unless instructed to
+   52   0.000356   0.000254     if !a:nerdtree.ui.getShowHidden() && self.isUnixHiddenFile()
+                                    return 1
+                                endif
+                            
+   52   0.000322   0.000238     if a:nerdtree.ui.getShowFiles() ==# 0 && self.isDirectory ==# 0
+                                    return 1
+                                endif
+                            
+   52              0.000043     return 0
+
+FUNCTION  39()
+Called 52 times
+Total time:   0.002362
+ Self time:   0.001698
+
+count  total (s)   self (s)
+   52              0.000091     let pat = a:pattern
+   52              0.000254     if strpart(pat,len(pat)-7) == '[[dir]]'
+                                    if !self.isDirectory
+                                        return 0
+                                    endif
+                                    let pat = strpart(pat,0, len(pat)-7)
+                                elseif strpart(pat,len(pat)-8) == '[[file]]'
+                                    if self.isDirectory
+                                        return 0
+                                    endif
+                                    let pat = strpart(pat,0, len(pat)-8)
+                                endif
+                            
+   52   0.001031   0.000367     return self.getLastPathComponent(0) =~# pat
+
+FUNCTION  121()
+Called 12 times
+Total time:   0.000531
+ Self time:   0.000135
+
+count  total (s)   self (s)
+   12   0.000518   0.000122     return self.path.flagSet.renderToString() . self.path.displayString()
+
+FUNCTION  126()
+Called 80 times
+Total time:   0.000145
+ Self time:   0.000145
+
+count  total (s)   self (s)
+   80              0.000111     return self._nerdtree
+
+FUNCTION  45()
+Called 86 times
+Total time:   0.002330
+ Self time:   0.001293
+
+count  total (s)   self (s)
+                            
+   86   0.001506   0.000469     if nerdtree#runningWindows()
+                                    if exists('+shellslash') && &shellslash
+                                        return '/'
+                                    endif
+                            
+                                    return '\'
+                                endif
+                            
+   86              0.000093     return '/'
+
+FUNCTION  49()
+Called 28 times
+Total time:   0.069624
+ Self time:   0.000655
+
+count  total (s)   self (s)
+   28   0.067128   0.000426     call g:NERDTreePathNotifier.NotifyListeners('refreshFlags', self, a:nerdtree, {})
+   28   0.002463   0.000196     call self.cacheDisplayString()
+
+FUNCTION  138()
+Called 12 times
+Total time:   0.008510
+ Self time:   0.000158
+
+count  total (s)   self (s)
+   12   0.008499   0.000147     call self.path.refreshFlags(self.getNerdtree())
+
+FUNCTION  51()
+Called 60 times
+Total time:   0.008513
+ Self time:   0.004123
+
+count  total (s)   self (s)
+   60              0.000191     let options = a:0 ? a:1 : {}
+   60              0.000113     let toReturn = ""
+                            
+   60              0.000198     if has_key(options, 'format')
+    2              0.000005         let format = options['format']
+    2              0.000009         if has_key(self, '_strFor' . format)
+    2   0.000064   0.000018             exec 'let toReturn = self._strFor' . format . '()'
+    2              0.000002         else
+                                        throw 'NERDTree.UnknownFormatError: unknown format "'. format .'"'
+                                    endif
+    2              0.000000     else
+   58   0.004418   0.000391         let toReturn = self._str()
+   58              0.000062     endif
+                            
+   60   0.000752   0.000435     if nerdtree#has_opt(options, 'escape')
+                                    let toReturn = shellescape(toReturn)
+                                endif
+                            
+   60              0.000336     if has_key(options, 'truncateTo')
+    2              0.000004         let limit = options['truncateTo']
+    2              0.000007         if len(toReturn) > limit-1
+    2              0.000010             let toReturn = toReturn[(len(toReturn)-limit+1):]
+    2              0.000033             if len(split(toReturn, '/')) > 1
+    2              0.000028                 let toReturn = '</' . join(split(toReturn, '/')[1:], '/') . '/'
+    2              0.000002             else
+                                            let toReturn = '<' . toReturn
+                                        endif
+    2              0.000002         endif
+    2              0.000000     endif
+                            
+   60              0.000086     return toReturn
+
+FUNCTION  52()
+Called 2 times
+Total time:   0.000046
+ Self time:   0.000046
+
+count  total (s)   self (s)
+    2              0.000022     let toReturn = '/' . join(self.pathSegments, '/')
+    2              0.000006     if self.isDirectory && toReturn != '/'
+    2              0.000007         let toReturn  = toReturn . '/'
+    2              0.000002     endif
+    2              0.000004     return toReturn
+
+FUNCTION  56()
+Called 58 times
+Total time:   0.004027
+ Self time:   0.001752
+
+count  total (s)   self (s)
+   58   0.002165   0.000479     let l:separator = s:Path.Slash()
+   58              0.000136     let l:leader = l:separator
+                            
+   58   0.000815   0.000226     if nerdtree#runningWindows()
+                                    let l:leader = self.drive . l:separator
+                                endif
+                            
+   58              0.000638     return l:leader . join(self.pathSegments, l:separator)
+
+FUNCTION  140()
+Called 2 times
+Total time:   0.011411
+ Self time:   0.000026
+
+count  total (s)   self (s)
+    2   0.011409   0.000024     return self._renderToString(0, 0)
+
+FUNCTION  141()
+Called 28 times
+Total time:   0.015681
+ Self time:   0.012700
+
+count  total (s)   self (s)
+   28              0.000062     let output = ""
+   28              0.000055     if a:drawText ==# 1
+                            
+   26              0.000123         let treeParts = repeat('  ', a:depth - 1)
+                            
+   26              0.000059         if !self.path.isDirectory
+   12              0.000032             let treeParts = treeParts . '  '
+   12              0.000012         endif
+                            
+   26   0.002930   0.000222         let line = treeParts . self.displayString()
+                            
+   26              0.000091         let output = output . line . "\n"
+   26              0.000030     endif
+                            
+                                "if the node is an open dir, draw its children
+   28              0.000072     if self.path.isDirectory ==# 1 && self.isOpen ==# 1
+                            
+    2   0.003571   0.000030         let childNodesToDraw = self.getVisibleChildren()
+                            
+    2   0.003003   0.000018         if self.isCascadable() && a:depth > 0
+                            
+                                        let output = output . childNodesToDraw[0]._renderToString(a:depth, 0)
+                            
+                                    elseif len(childNodesToDraw) > 0
+   28              0.000047             for i in childNodesToDraw
+   26              0.000165                 let output = output . i._renderToString(a:depth + 1, 1)
+   26              0.000048             endfor
+    2              0.000002         endif
+    2              0.000002     endif
+                            
+   28              0.000048     return output
+
+FUNCTION  148()
+Called 14 times
+Total time:   0.002177
+ Self time:   0.000979
+
+count  total (s)   self (s)
+   14              0.000031     let l:result = ''
+                            
+                                " Build a label that identifies this TreeDirNode.
+   14              0.000027     let l:label = ''
+   14   0.000762   0.000095     let l:cascade = self.getCascade()
+   28              0.000063     for l:dirNode in l:cascade
+   14   0.000277   0.000112         let l:label .= l:dirNode.path.displayString()
+   14              0.000038     endfor
+                            
+                                " Select the appropriate open/closed status indicator symbol.
+   14              0.000077     if l:cascade[-1].isOpen
+                                    let l:symbol = g:NERDTreeDirArrowCollapsible
+                                else
+   14              0.000044         let l:symbol = g:NERDTreeDirArrowExpandable
+   14              0.000015     endif
+                            
+   14   0.000512   0.000146     let l:flags = l:cascade[-1].path.flagSet.renderToString()
+                            
+   14              0.000075     let l:result = l:symbol . ' ' . l:flags . l:label
+   14              0.000028     return l:result
+
+FUNCTION  158()
+Called 18 times
+Total time:   0.006745
+ Self time:   0.001017
+
+count  total (s)   self (s)
+   18              0.000039     let toReturn = []
+   70              0.000112     for i in self.children
+   52   0.006096   0.000368         if i.path.ignore(self.getNerdtree()) ==# 0
+   52              0.000152             call add(toReturn, i)
+   52              0.000033         endif
+   52              0.000071     endfor
+   18              0.000027     return toReturn
+
+FUNCTION  273()
+Called 28 times
+Total time:   0.066702
+ Self time:   0.001100
+
+count  total (s)   self (s)
+   28   0.000833   0.000314     let event = g:NERDTreeEvent.New(a:nerdtree, a:path, a:event, a:params)
+                            
+   56   0.000948   0.000264     for listener in s:Notifier.GetListenersForEvent(a:event)
+   28   0.064684   0.000285         call {listener}(event)
+   28              0.000034     endfor
+
+FUNCTION  NERDTreeRender()
+Called 2 times
+Total time:   0.012717
+ Self time:   0.000038
+
+count  total (s)   self (s)
+    2   0.012715   0.000036     call nerdtree#renderView()
+
+FUNCTION  160()
+Called 16 times
+Total time:   0.003507
+ Self time:   0.000303
+
+count  total (s)   self (s)
+   16              0.000056     if g:NERDTreeCascadeSingleChildDir == 0
+                                    return 0
+                                endif
+                            
+   16   0.003323   0.000119     let c = self.getVisibleChildren()
+   16              0.000061     return len(c) == 1 && c[0].path.isDirectory
+
+FUNCTION  airline#util#wrap()
+Called 662 times
+Total time:   0.005185
+ Self time:   0.005185
+
+count  total (s)   self (s)
+  662              0.002265   if a:minwidth > 0 && winwidth(0) < a:minwidth
+                                return ''
+                              endif
+  662              0.000922   return a:text
+
+FUNCTION  170()
+Called 16 times
+Total time:   0.079523
+ Self time:   0.060021
+
+count  total (s)   self (s)
+   16   0.061540   0.000201     call self.path.refreshFlags(self.getNerdtree())
+   42              0.000163     for i in self.children
+   26   0.008655   0.000145         call i.refreshFlags()
+   26              0.000036     endfor
+
+FUNCTION  xolox#misc#cursorhold#autocmd()
+Called 2 times
+Total time:   0.000135
+ Self time:   0.000135
+
+count  total (s)   self (s)
+                              " The 'top level event handler' that's called by Vim whenever the
+                              " [CursorHold][] or [CursorHoldI][] event fires. It iterates through the
+                              " event handlers registered using `xolox#misc#cursorhold#register()` and
+                              " calls each event handler at the appropriate interval, keeping track of
+                              " the time when each event handler was last run.
+    2              0.000021   for handler in g:xolox#misc#cursorhold#handlers
+                                let function = handler['function']
+                                let last_run = get(handler, 'last_run', 0)
+                                let interval = get(handler, 'interval', 4)
+                                call xolox#misc#msg#debug("vim-misc %s: Checking handler %s with interval %i and last run %i ..", g:xolox#misc#version, function, interval, last_run)
+                                " Rate limit in case &updatetime is set (very) low.
+                                let time_until_next_run = (last_run + interval) - localtime()
+                                if time_until_next_run > 0
+                                  call xolox#misc#msg#debug("vim-misc %s: Rate limiting handler %s (time until next run: %i seconds).", g:xolox#misc#version, function, time_until_next_run)
+                                else
+                                  call xolox#misc#msg#debug("vim-misc %s: Running handler %s ..", g:xolox#misc#version, function)
+                                  call call(function, get(handler, 'arguments', []))
+                                  let handler['last_run'] = localtime()
+                                endif
+                              endfor
+
+FUNCTION  92()
+Called 28 times
+Total time:   0.000284
+ Self time:   0.000284
+
+count  total (s)   self (s)
+   28              0.000115     if !exists("g:NERDTreeBookmarks")
+                                    let g:NERDTreeBookmarks = []
+                                endif
+   28              0.000041     return g:NERDTreeBookmarks
+
+FUNCTION  airline#extensions#whitespace#check()
+Called 132 times
+Total time:   0.022362
+ Self time:   0.019475
+
+count  total (s)   self (s)
+  132              0.000768   let max_lines = get(g:, 'airline#extensions#whitespace#max_lines', 20000)
+  132              0.001173   if &readonly || !&modifiable || !s:enabled || line('$') > max_lines || get(b:, 'airline_whitespace_disabled', 0)
+                                return ''
+                              endif
+                            
+  132              0.000668   if !exists('b:airline_whitespace_check')
+                                let b:airline_whitespace_check = ''
+                                let checks = get(b:, 'airline_whitespace_checks', get(g:, 'airline#extensions#whitespace#checks', s:default_checks))
+                            
+                                let trailing = 0
+                                if index(checks, 'trailing') > -1
+                                  try
+                                    let regexp = get(g:, 'airline#extensions#whitespace#trailing_regexp', '\s$')
+                                    let trailing = search(regexp, 'nw')
+                                  catch
+                                    echomsg 'airline#whitespace: error occured evaluating '. regexp
+                                    echomsg v:exception
+                                    return ''
+                                  endtry
+                                endif
+                            
+                                let mixed = 0
+                                let check = 'indent'
+                                if index(checks, check) > -1 && index(get(s:skip_check_ft, &ft, []), check) < 0
+                                  let mixed = s:check_mixed_indent()
+                                endif
+                            
+                                let mixed_file = ''
+                                let check = 'mixed-indent-file'
+                                if index(checks, check) > -1 && index(get(s:skip_check_ft, &ft, []), check) < 0
+                                  let mixed_file = s:check_mixed_indent_file()
+                                endif
+                            
+                                let long = 0
+                                if index(checks, 'long') > -1 && &tw > 0
+                                  let long = search('\%>'.&tw.'v.\+', 'nw')
+                                endif
+                            
+                                if trailing != 0 || mixed != 0 || long != 0 || !empty(mixed_file)
+                                  let b:airline_whitespace_check = s:symbol
+                                  if strlen(s:symbol) > 0
+                                    let space = (g:airline_symbols.space)
+                                  else
+                                    let space = ''
+                                  endif
+                            
+                                  if s:show_message
+                                    if trailing != 0
+                                      let trailing_fmt = get(g:, 'airline#extensions#whitespace#trailing_format', '[%s]trailing')
+                                      let b:airline_whitespace_check .= space.printf(trailing_fmt, trailing)
+                                    endif
+                                    if mixed != 0
+                                      let mixed_indent_fmt = get(g:, 'airline#extensions#whitespace#mixed_indent_format', '[%s]mixed-indent')
+                                      let b:airline_whitespace_check .= space.printf(mixed_indent_fmt, mixed)
+                                    endif
+                                    if long != 0
+                                      let long_fmt = get(g:, 'airline#extensions#whitespace#long_format', '[%s]long')
+                                      let b:airline_whitespace_check .= space.printf(long_fmt, long)
+                                    endif
+                                    if !empty(mixed_file)
+                                      let mixed_indent_file_fmt = get(g:, 'airline#extensions#whitespace#mixed_indent_file_format', '[%s]mix-indent-file')
+                                      let b:airline_whitespace_check .= space.printf(mixed_indent_file_fmt, mixed_file)
+                                    endif
+                                  endif
+                                endif
+                              endif
+  132   0.004403   0.001516   return airline#util#shorten(b:airline_whitespace_check, 120, 9)
+
+FUNCTION  nerdtree#runningWindows()
+Called 172 times
+Total time:   0.001892
+ Self time:   0.001892
+
+count  total (s)   self (s)
+  172              0.001806     return has("win16") || has("win32") || has("win64")
+
+FUNCTION  NERDTreeGitStatusRefreshListener()
+Called 28 times
+Total time:   0.064399
+ Self time:   0.001038
+
+count  total (s)   self (s)
+   28              0.000161     if !exists('b:NOT_A_GIT_REPOSITORY')
+                                    call g:NERDTreeGitStatusRefresh()
+                                endif
+   28              0.000084     let l:path = a:event.subject
+   28   0.063427   0.000247     let l:flag = g:NERDTreeGetGitStatusPrefix(l:path)
+   28   0.000422   0.000241     call l:path.flagSet.clearFlags('git')
+   28              0.000059     if l:flag !=# ''
+                                    call l:path.flagSet.addFlag('git', l:flag)
+                                endif
+
+FUNCTION  248()
+Called 2 times
+Total time:   0.000004
+ Self time:   0.000004
+
+count  total (s)   self (s)
+    2              0.000004     return self._showBookmarks
+
+FUNCTION  airline#parts#ffenc()
+Called 132 times
+Total time:   0.004768
+ Self time:   0.004768
+
+count  total (s)   self (s)
+  132              0.000842   let expected = get(g:, 'airline#parts#ffenc#skip_expected_string', '')
+  132              0.000396   let bomb     = &l:bomb ? '[BOM]' : ''
+  132              0.001575   let ff       = strlen(&ff) ? '['.&ff.']' : ''
+  132              0.000854   if expected is# &fenc.bomb.ff
+                                return ''
+                              else
+  132              0.000609     return &fenc.bomb.ff
+                              endif
+
+FUNCTION  airline#parts#paste()
+Called 132 times
+Total time:   0.000561
+ Self time:   0.000561
+
+count  total (s)   self (s)
+  132              0.000486   return g:airline_detect_paste && &paste ? g:airline_symbols.paste : ''
+
+FUNCTION  <SNR>59_NERDTreeTrimDoubleQuotes()
+Called 8 times
+Total time:   0.000516
+ Self time:   0.000516
+
+count  total (s)   self (s)
+    8              0.000225     let l:toReturn = substitute(a:pathStr, '^"', '', '')
+    8              0.000254     let l:toReturn = substitute(l:toReturn, '"$', '', '')
+    8              0.000020     return l:toReturn
+
+FUNCTION  <SNR>118_OnCursorMovedNormalMode()
+Called 128 times
+Total time:   0.029047
+ Self time:   0.018094
+
+count  total (s)   self (s)
+  128   0.011816   0.000863   if !s:AllowedToCompleteInCurrentBuffer()
+                                return
+                              endif
+                            
+  128              0.016774   exec s:python_command "ycm_state.OnCursorMoved()"
+
+FUNCTION  airline#parts#readonly()
+Called 134 times
+Total time:   0.001630
+ Self time:   0.001630
+
+count  total (s)   self (s)
+  134              0.000850   if &readonly && !filereadable(bufname('%'))
+                                return '[noperm]'
+                              else
+  134              0.000291     return &readonly ? g:airline_symbols.readonly : ''
+                              endif
+
+FUNCTION  nerdtree#has_opt()
+Called 60 times
+Total time:   0.000317
+ Self time:   0.000317
+
+count  total (s)   self (s)
+   60              0.000258     return has_key(a:options, a:name) && a:options[a:name] == 1
+
+FUNCTION  NERDTreeGitStatusRefresh()
+Called 2 times
+Total time:   0.050052
+ Self time:   0.003239
+
+count  total (s)   self (s)
+    2              0.000013     let b:NERDTreeCachedGitFileStatus = {}
+    2              0.000010     let b:NERDTreeCachedGitDirtyDir   = {}
+    2              0.000005     let b:NOT_A_GIT_REPOSITORY        = 1
+                            
+    2   0.000390   0.000019     let l:root = b:NERDTree.root.path.str()
+    2              0.000004     let l:gitcmd = 'git -c color.status=false status -s'
+    2              0.000003     if g:NERDTreeShowIgnoredStatus
+                                    let l:gitcmd = l:gitcmd . ' --ignored'
+                                endif
+    2              0.000007     if exists('g:NERDTreeGitStatusIgnoreSubmodules')
+                                    let l:gitcmd = l:gitcmd . ' --ignore-submodules'
+                                    if g:NERDTreeGitStatusIgnoreSubmodules ==# 'all' || g:NERDTreeGitStatusIgnoreSubmodules ==# 'dirty' || g:NERDTreeGitStatusIgnoreSubmodules ==# 'untracked'
+                                        let l:gitcmd = l:gitcmd . '=' . g:NERDTreeGitStatusIgnoreSubmodules
+                                    endif
+                                endif
+    2   0.046671   0.001368     let l:statusesStr = system(l:gitcmd . ' ' . l:root)
+    2              0.000218     let l:statusesSplit = split(l:statusesStr, '\n')
+    2              0.000107     if l:statusesSplit != [] && l:statusesSplit[0] =~# 'fatal:.*'
+                                    let l:statusesSplit = []
+                                    return
+                                endif
+    2              0.000015     let b:NOT_A_GIT_REPOSITORY = 0
+                            
+    6              0.000036     for l:statusLine in l:statusesSplit
+                                    " cache git status of files
+    4              0.000113         let l:pathStr = substitute(l:statusLine, '...', '', '')
+    4              0.000062         let l:pathSplit = split(l:pathStr, ' -> ')
+    4              0.000024         if len(l:pathSplit) == 2
+                                        call s:NERDTreeCacheDirtyDir(l:pathSplit[0])
+                                        let l:pathStr = l:pathSplit[1]
+                                    else
+    4              0.000020             let l:pathStr = l:pathSplit[0]
+    4              0.000003         endif
+    4   0.000595   0.000250         let l:pathStr = s:NERDTreeTrimDoubleQuotes(l:pathStr)
+    4              0.000117         if l:pathStr =~# '\.\./.*'
+                                        continue
+                                    endif
+    4   0.000206   0.000141         let l:statusKey = s:NERDTreeGetFileGitStatusKey(l:statusLine[0], l:statusLine[1])
+    4              0.000051         let b:NERDTreeCachedGitFileStatus[fnameescape(l:pathStr)] = l:statusKey
+                            
+    4              0.000062         if l:statusKey == 'Ignored'
+                                        if isdirectory(l:pathStr)
+                                            let b:NERDTreeCachedGitDirtyDir[fnameescape(l:pathStr)] = l:statusKey
+                                        endif
+                                    else
+    4   0.000923   0.000194             call s:NERDTreeCacheDirtyDir(l:pathStr)
+    4              0.000004         endif
+    4              0.000003     endfor
+
+FUNCTION  nerdtree#exec()
+Called 2 times
+Total time:   0.002446
+ Self time:   0.002446
+
+count  total (s)   self (s)
+    2              0.000019     let old_ei = &ei
+    2              0.000038     set ei=BufEnter,BufLeave,VimEnter
+    2              0.002353     exec a:cmd
+    2              0.000032     let &ei = old_ei
+
+FUNCTION  <SNR>118_AllowedToCompleteInCurrentBuffer()
+Called 128 times
+Total time:   0.010953
+ Self time:   0.001259
+
+count  total (s)   self (s)
+  128   0.010853   0.001159   return s:AllowedToCompleteInBuffer( '%' )
+
+FUNCTION  airline#check_mode()
+Called 134 times
+Total time:   0.019113
+ Self time:   0.019113
+
+count  total (s)   self (s)
+  134              0.001061   let context = s:contexts[a:winnr]
+                            
+  134              0.000770   if get(w:, 'airline_active', 1)
+  132              0.000582     let l:m = mode()
+  132              0.000443     if l:m ==# "i"
+                                  let l:mode = ['insert']
+                                elseif l:m ==# "R"
+                                  let l:mode = ['replace']
+                                elseif l:m =~# '\v(v|V||s|S|)'
+                                  let l:mode = ['visual']
+                                elseif l:m ==# "t"
+                                  let l:mode = ['terminal']
+                                else
+  132              0.000537       let l:mode = ['normal']
+  132              0.000161     endif
+  132              0.000952     let w:airline_current_mode = get(g:airline_mode_map, l:m, l:m)
+  132              0.000144   else
+    2              0.000006     let l:mode = ['inactive']
+    2              0.000020     let w:airline_current_mode = get(g:airline_mode_map, '__')
+    2              0.000002   endif
+                            
+  134              0.000630   if g:airline_detect_modified && &modified
+                                call add(l:mode, 'modified')
+                              endif
+                            
+  134              0.000300   if g:airline_detect_paste && &paste
+                                call add(l:mode, 'paste')
+                              endif
+                            
+  134              0.000926   if g:airline_detect_crypt && exists("+key") && !empty(&key)
+                                call add(l:mode, 'crypt')
+                              endif
+                            
+  134              0.000407   if g:airline_detect_spell && &spell
+                                call add(l:mode, 'spell')
+                              endif
+                            
+  134              0.000316   if &readonly || ! &modifiable
+    2              0.000009     call add(l:mode, 'readonly')
+    2              0.000002   endif
+                            
+  134              0.001096   let mode_string = join(l:mode)
+  134              0.000773   if get(w:, 'airline_lastmode', '') != mode_string
+                                call airline#highlighter#highlight_modified_inactive(context.bufnr)
+                                call airline#highlighter#highlight(l:mode, context.bufnr)
+                                let w:airline_lastmode = mode_string
+                              endif
+                            
+  134              0.000211   return ''
+
+FUNCTION  nerdtree#renderView()
+Called 2 times
+Total time:   0.012679
+ Self time:   0.000048
+
+count  total (s)   self (s)
+    2   0.012672   0.000041     call b:NERDTree.render()
+
+FUNCTION  <SNR>101_sync_active_winnr()
+Called 128 times
+Total time:   0.001962
+ Self time:   0.001962
+
+count  total (s)   self (s)
+  128              0.001263   if exists('#airline') && winnr() != s:active_winnr
+                                call airline#update_statusline()
+                              endif
+
+FUNCTION  airline#parts#spell()
+Called 132 times
+Total time:   0.004652
+ Self time:   0.004652
+
+count  total (s)   self (s)
+  132              0.002165   let spelllang = g:airline_detect_spelllang ? printf(" [%s]", toupper(substitute(&spelllang, ',', '/', 'g'))) : ''
+  132              0.000329   if g:airline_detect_spell && &spell
+                                if winwidth(0) >= 90
+                                  return g:airline_symbols.spell . spelllang
+                                elseif winwidth(0) >= 70
+                                  return g:airline_symbols.spell
+                                else
+                                  return split(g:airline_symbols.spell, '\zs')[0]
+                                endif
+                              endif
+  132              0.000150   return ''
+
+FUNCTION  airline#parts#crypt()
+Called 132 times
+Total time:   0.001272
+ Self time:   0.001272
+
+count  total (s)   self (s)
+  132              0.001164   return g:airline_detect_crypt && exists("+key") && !empty(&key) ? g:airline_symbols.crypt : ''
+
+FUNCTION  <SNR>109_wordcount_update()
+Called 128 times
+Total time:   0.010602
+ Self time:   0.010602
+
+count  total (s)   self (s)
+  128              0.000652   if empty(bufname(''))
+                                return
+                              endif
+  128              0.004242   if match(&ft, get(g:, 'airline#extensions#wordcount#filetypes')) > -1
+                                let l:mode = mode()
+                                if l:mode ==# 'v' || l:mode ==# 'V' || l:mode ==# 's' || l:mode ==# 'S'
+                                  let b:airline_wordcount = airline#extensions#wordcount#formatters#{s:formatter}#format()
+                                  let b:airline_change_tick = b:changedtick
+                                else
+                                  if get(b:, 'airline_wordcount_cache', '') is# '' || b:airline_wordcount_cache isnot# get(b:, 'airline_wordcount', '') || get(b:, 'airline_change_tick', 0) != b:changedtick ||  get(b:, 'airline_winwidth', 0) != winwidth(0)
+                                    " cache data
+                                    let b:airline_wordcount = airline#extensions#wordcount#formatters#{s:formatter}#format()
+                                    let b:airline_wordcount_cache = b:airline_wordcount
+                                    let b:airline_change_tick = b:changedtick
+                                    let b:airline_winwidth = winwidth(0)
+                                  endif
+                                endif
+                              endif
+
+FUNCTION  216()
+Called 28 times
+Total time:   0.000181
+ Self time:   0.000181
+
+count  total (s)   self (s)
+   28              0.000160     let self._flags[a:scope] = []
+
+FUNCTION  220()
+Called 26 times
+Total time:   0.000649
+ Self time:   0.000649
+
+count  total (s)   self (s)
+   26              0.000058     let flagstring = ""
+   52              0.000159     for i in values(self._flags)
+   26              0.000117         let flagstring .= join(i)
+   26              0.000030     endfor
+                            
+   26              0.000080     if len(flagstring) == 0
+   26              0.000040         return ""
+                                endif
+                            
+                                return '[' . flagstring . ']'
+
+FUNCTION  226()
+Called 2 times
+Total time:   0.002823
+ Self time:   0.000070
+
+count  total (s)   self (s)
+    2   0.000192   0.000014     call g:NERDTree.MustBeOpen()
+    2   0.002626   0.000051     call nerdtree#exec(g:NERDTree.GetWinNum() . "wincmd w")
+
+FUNCTION  airline#parts#mode()
+Called 132 times
+Total time:   0.005029
+ Self time:   0.001639
+
+count  total (s)   self (s)
+  132   0.004895   0.001505   return airline#util#shorten(get(w:, 'airline_current_mode', ''), 79, 1)
+
+FUNCTION  232()
+Called 6 times
+Total time:   0.000420
+ Self time:   0.000420
+
+count  total (s)   self (s)
+    6              0.000036     if exists("t:NERDTreeBufName")
+    6              0.000374         return bufwinnr(t:NERDTreeBufName)
+                                endif
+                            
+                                return -1
+
+FUNCTION  233()
+Called 4 times
+Total time:   0.000338
+ Self time:   0.000047
+
+count  total (s)   self (s)
+    4   0.000335   0.000044     return s:NERDTree.GetWinNum() != -1
+
+FUNCTION  236()
+Called 2 times
+Total time:   0.000178
+ Self time:   0.000023
+
+count  total (s)   self (s)
+    2   0.000166   0.000011     if !s:NERDTree.IsOpen()
+                                    throw "NERDTree.TreeNotOpen"
+                                endif
+
+FUNCTION  238()
+Called 52 times
+Total time:   0.000383
+ Self time:   0.000383
+
+count  total (s)   self (s)
+   52              0.000180     if !exists('s:NERDTree._PathFilters')
+                                    let s:NERDTree._PathFilters = []
+                                endif
+   52              0.000066     return s:NERDTree._PathFilters
+
+FUNCTION  <SNR>118_AllowedToCompleteInBuffer()
+Called 128 times
+Total time:   0.009694
+ Self time:   0.008618
+
+count  total (s)   self (s)
+  128              0.001336   let buffer_filetype = getbufvar( a:buffer, '&filetype' )
+                            
+  128              0.001394   if empty( buffer_filetype ) || getbufvar( a:buffer, '&buftype' ) ==# 'nofile' || buffer_filetype ==# 'qf'
+                                return 0
+                              endif
+                            
+  128   0.002240   0.001164   if s:DisableOnLargeFile( a:buffer )
+                                return 0
+                              endif
+                            
+  128              0.001015   let whitelist_allows = has_key( g:ycm_filetype_whitelist, '*' ) || has_key( g:ycm_filetype_whitelist, buffer_filetype )
+  128              0.000649   let blacklist_allows = !has_key( g:ycm_filetype_blacklist, buffer_filetype )
+                            
+  128              0.000389   let allowed = whitelist_allows && blacklist_allows
+  128              0.000180   if allowed
+  128              0.000724     let s:previous_allowed_buffer_number = bufnr( a:buffer )
+  128              0.000127   endif
+  128              0.000188   return allowed
+
+FUNCTION  241()
+Called 2 times
+Total time:   0.012631
+ Self time:   0.000026
+
+count  total (s)   self (s)
+    2   0.012630   0.000025     call self.ui.render()
+
+FUNCTION  243()
+Called 2 times
+Total time:   0.000354
+ Self time:   0.000337
+
+count  total (s)   self (s)
+    2   0.000034   0.000023     if self.getShowHelp()
+                                    let help  = "\" NERDTree (" . nerdtree#version() . ") quickhelp~\n"
+                                    let help .= "\" ============================\n"
+                                    let help .= "\" File node mappings~\n"
+                                    let help .= "\" ". (g:NERDTreeMouseMode ==# 3 ? "single" : "double") ."-click,\n"
+                                    let help .= "\" <CR>,\n"
+                                    if self.nerdtree.isTabTree()
+                                        let help .= "\" ". g:NERDTreeMapActivateNode .": open in prev window\n"
+                                    else
+                                        let help .= "\" ". g:NERDTreeMapActivateNode .": open in current window\n"
+                                    endif
+                                    if self.nerdtree.isTabTree()
+                                        let help .= "\" ". g:NERDTreeMapPreview .": preview\n"
+                                    endif
+                                    let help .= "\" ". g:NERDTreeMapOpenInTab.": open in new tab\n"
+                                    let help .= "\" ". g:NERDTreeMapOpenInTabSilent .": open in new tab silently\n"
+                                    let help .= "\" middle-click,\n"
+                                    let help .= "\" ". g:NERDTreeMapOpenSplit .": open split\n"
+                                    let help .= "\" ". g:NERDTreeMapPreviewSplit .": preview split\n"
+                                    let help .= "\" ". g:NERDTreeMapOpenVSplit .": open vsplit\n"
+                                    let help .= "\" ". g:NERDTreeMapPreviewVSplit .": preview vsplit\n"
+                            
+                                    let help .= "\"\n\" ----------------------------\n"
+                                    let help .= "\" Directory node mappings~\n"
+                                    let help .= "\" ". (g:NERDTreeMouseMode ==# 1 ? "double" : "single") ."-click,\n"
+                                    let help .= "\" ". g:NERDTreeMapActivateNode .": open & close node\n"
+                                    let help .= "\" ". g:NERDTreeMapOpenRecursively .": recursively open node\n"
+                                    let help .= "\" ". g:NERDTreeMapOpenInTab.": open in new tab\n"
+                                    let help .= "\" ". g:NERDTreeMapOpenInTabSilent .": open in new tab silently\n"
+                                    let help .= "\" ". g:NERDTreeMapCloseDir .": close parent of node\n"
+                                    let help .= "\" ". g:NERDTreeMapCloseChildren .": close all child nodes of\n"
+                                    let help .= "\"    current node recursively\n"
+                                    let help .= "\" middle-click,\n"
+                                    let help .= "\" ". g:NERDTreeMapOpenExpl.": explore selected dir\n"
+                            
+                                    let help .= "\"\n\" ----------------------------\n"
+                                    let help .= "\" Bookmark table mappings~\n"
+                                    let help .= "\" double-click,\n"
+                                    let help .= "\" ". g:NERDTreeMapActivateNode .": open bookmark\n"
+                                    let help .= "\" ". g:NERDTreeMapOpenInTab.": open in new tab\n"
+                                    let help .= "\" ". g:NERDTreeMapOpenInTabSilent .": open in new tab silently\n"
+                                    let help .= "\" ". g:NERDTreeMapDeleteBookmark .": delete bookmark\n"
+                            
+                                    let help .= "\"\n\" ----------------------------\n"
+                                    let help .= "\" Tree navigation mappings~\n"
+                                    let help .= "\" ". g:NERDTreeMapJumpRoot .": go to root\n"
+                                    let help .= "\" ". g:NERDTreeMapJumpParent .": go to parent\n"
+                                    let help .= "\" ". g:NERDTreeMapJumpFirstChild  .": go to first child\n"
+                                    let help .= "\" ". g:NERDTreeMapJumpLastChild   .": go to last child\n"
+                                    let help .= "\" ". g:NERDTreeMapJumpNextSibling .": go to next sibling\n"
+                                    let help .= "\" ". g:NERDTreeMapJumpPrevSibling .": go to prev sibling\n"
+                            
+                                    let help .= "\"\n\" ----------------------------\n"
+                                    let help .= "\" Filesystem mappings~\n"
+                                    let help .= "\" ". g:NERDTreeMapChangeRoot .": change tree root to the\n"
+                                    let help .= "\"    selected dir\n"
+                                    let help .= "\" ". g:NERDTreeMapUpdir .": move tree root up a dir\n"
+                                    let help .= "\" ". g:NERDTreeMapUpdirKeepOpen .": move tree root up a dir\n"
+                                    let help .= "\"    but leave old root open\n"
+                                    let help .= "\" ". g:NERDTreeMapRefresh .": refresh cursor dir\n"
+                                    let help .= "\" ". g:NERDTreeMapRefreshRoot .": refresh current root\n"
+                                    let help .= "\" ". g:NERDTreeMapMenu .": Show menu\n"
+                                    let help .= "\" ". g:NERDTreeMapChdir .":change the CWD to the\n"
+                                    let help .= "\"    selected dir\n"
+                                    let help .= "\" ". g:NERDTreeMapCWD .":change tree root to CWD\n"
+                            
+                                    let help .= "\"\n\" ----------------------------\n"
+                                    let help .= "\" Tree filtering mappings~\n"
+                                    let help .= "\" ". g:NERDTreeMapToggleHidden .": hidden files (" . (self.getShowHidden() ? "on" : "off") . ")\n"
+                                    let help .= "\" ". g:NERDTreeMapToggleFilters .": file filters (" . (self.isIgnoreFilterEnabled() ? "on" : "off") . ")\n"
+                                    let help .= "\" ". g:NERDTreeMapToggleFiles .": files (" . (self.getShowFiles() ? "on" : "off") . ")\n"
+                                    let help .= "\" ". g:NERDTreeMapToggleBookmarks .": bookmarks (" . (self.getShowBookmarks() ? "on" : "off") . ")\n"
+                            
+                                    "add quickhelp entries for each custom key map
+                                    let help .= "\"\n\" ----------------------------\n"
+                                    let help .= "\" Custom mappings~\n"
+                                    for i in g:NERDTreeKeyMap.All()
+                                        if !empty(i.quickhelpText)
+                                            let help .= "\" ". i.key .": ". i.quickhelpText ."\n"
+                                        endif
+                                    endfor
+                            
+                                    let help .= "\"\n\" ----------------------------\n"
+                                    let help .= "\" Other mappings~\n"
+                                    let help .= "\" ". g:NERDTreeMapQuit .": Close the NERDTree window\n"
+                                    let help .= "\" ". g:NERDTreeMapToggleZoom .": Zoom (maximize-minimize)\n"
+                                    let help .= "\"    the NERDTree window\n"
+                                    let help .= "\" ". g:NERDTreeMapHelp .": toggle help\n"
+                                    let help .= "\"\n\" ----------------------------\n"
+                                    let help .= "\" Bookmark commands~\n"
+                                    let help .= "\" :Bookmark [<name>]\n"
+                                    let help .= "\" :BookmarkToRoot <name>\n"
+                                    let help .= "\" :RevealBookmark <name>\n"
+                                    let help .= "\" :OpenBookmark <name>\n"
+                                    let help .= "\" :ClearBookmarks [<names>]\n"
+                                    let help .= "\" :ClearAllBookmarks\n"
+                                    silent! put =help
+                                elseif !self.isMinimal()
+    2              0.000008         let help ="\" Press ". g:NERDTreeMapHelp ." for help\n"
+    2              0.000015         silent! put =help
+    2              0.000002     endif
+
+FUNCTION  249()
+Called 52 times
+Total time:   0.000084
+ Self time:   0.000084
+
+count  total (s)   self (s)
+   52              0.000066     return self._showFiles
+
+FUNCTION  <SNR>118_DisableOnLargeFile()
+Called 128 times
+Total time:   0.001076
+ Self time:   0.001076
+
+count  total (s)   self (s)
+  128              0.000655   if exists( 'b:ycm_largefile' )
+  128              0.000259     return b:ycm_largefile
+                              endif
+                            
+                              let threshold = g:ycm_disable_for_files_larger_than_kb * 1024
+                              let b:ycm_largefile = threshold > 0 && getfsize( expand( a:buffer ) ) > threshold
+                              if b:ycm_largefile
+                                exec s:python_command "vimsupport.PostVimMessage(" . "'YouCompleteMe is disabled in this buffer; " . "the file exceeded the max size (see YCM options).' )"
+                              endif
+                              return b:ycm_largefile
+
+FUNCTION  <SNR>59_CursorHoldUpdate()
+Called 2 times
+Total time:   0.086500
+ Self time:   0.000281
+
+count  total (s)   self (s)
+    2              0.000015     if g:NERDTreeUpdateOnCursorHold != 1
+                                    return
+                                endif
+                            
+    2   0.000213   0.000030     if !g:NERDTree.IsOpen()
+                                    return
+                                endif
+                            
+                                " Do not update when a special buffer is selected
+    2              0.000010     if !empty(&l:buftype)
+                                    return
+                                endif
+                            
+    2              0.000010     let l:winnr = winnr()
+    2              0.000008     let l:altwinnr = winnr('#')
+                            
+    2   0.002865   0.000042     call g:NERDTree.CursorToTreeWin()
+    2   0.070545   0.000049     call b:NERDTree.root.refreshFlags()
+    2   0.012749   0.000032     call NERDTreeRender()
+                            
+    2              0.000018     exec l:altwinnr . 'wincmd w'
+    2              0.000025     exec l:winnr . 'wincmd w'
+
+FUNCTION  251()
+Called 52 times
+Total time:   0.000102
+ Self time:   0.000102
+
+count  total (s)   self (s)
+   52              0.000071     return self._showHidden
+
+FUNCTION  254()
+Called 52 times
+Total time:   0.000117
+ Self time:   0.000117
+
+count  total (s)   self (s)
+   52              0.000090     return self._ignoreEnabled == 1
+
+FUNCTION  255()
+Called 6 times
+Total time:   0.000012
+ Self time:   0.000012
+
+count  total (s)   self (s)
+    6              0.000009     return g:NERDTreeMinimalUI
+
+FUNCTION  262()
+Called 2 times
+Total time:   0.012605
+ Self time:   0.000585
+
+count  total (s)   self (s)
+    2              0.000032     setlocal modifiable
+                            
+                                "remember the top line of the buffer and the current line so we can
+                                "restore the view exactly how it was
+    2              0.000008     let curLine = line(".")
+    2              0.000005     let curCol = col(".")
+    2              0.000012     let topLine = line("w0")
+                            
+                                "delete all lines in the buffer (being careful not to clobber a register)
+    2              0.000079     silent 1,$delete _
+                            
+    2   0.000382   0.000028     call self._dumpHelp()
+                            
+                                "delete the blank line before the help and add one after it
+    2   0.000010   0.000007     if !self.isMinimal()
+    2              0.000012         call setline(line(".")+1, "")
+    2              0.000011         call cursor(line(".")+1, col("."))
+    2              0.000002     endif
+                            
+    2   0.000018   0.000014     if self.getShowBookmarks()
+                                    call self._renderBookmarks()
+                                endif
+                            
+                                "add the 'up a dir' line
+    2   0.000008   0.000005     if !self.isMinimal()
+    2   0.000041   0.000036         call setline(line(".")+1, s:UI.UpDirLine())
+    2              0.000009         call cursor(line(".")+1, col("."))
+    2              0.000001     endif
+                            
+                                "draw the header line
+    2   0.000263   0.000023     let header = self.nerdtree.root.path.str({'format': 'UI', 'truncateTo': winwidth(0)})
+    2              0.000010     call setline(line(".")+1, header)
+    2              0.000010     call cursor(line(".")+1, col("."))
+                            
+                                "draw the tree
+    2   0.011483   0.000072     silent put =self.nerdtree.root.renderToString()
+                            
+                                "delete the blank line at the top of the buffer
+    2              0.000024     silent 1,1delete _
+                            
+                                "restore the view
+    2              0.000010     let old_scrolloff=&scrolloff
+    2              0.000037     let &scrolloff=0
+    2              0.000010     call cursor(topLine, 1)
+    2              0.000055     normal! zt
+    2              0.000008     call cursor(curLine, curCol)
+    2              0.000009     let &scrolloff = old_scrolloff
+                            
+    2              0.000012     setlocal nomodifiable
+
+FUNCTION  <SNR>59_NERDTreeGetIndicator()
+Called 28 times
+Total time:   0.000703
+ Self time:   0.000703
+
+count  total (s)   self (s)
+   28              0.000121     if exists('g:NERDTreeIndicatorMapCustom')
+                                    let l:indicator = get(g:NERDTreeIndicatorMapCustom, a:statusKey, '')
+                                    if l:indicator !=# ''
+                                        return l:indicator
+                                    endif
+                                endif
+   28              0.000171     let l:indicator = get(s:NERDTreeIndicatorMap, a:statusKey, '')
+   28              0.000059     if l:indicator !=# ''
+                                    return l:indicator
+                                endif
+   28              0.000031     return ''
+
+FUNCTION  airline#util#shorten()
+Called 264 times
+Total time:   0.006277
+ Self time:   0.006277
+
+count  total (s)   self (s)
+  264              0.001807   if winwidth(0) < a:winwidth && len(split(a:text, '\zs')) > a:minwidth
+                                if get(a:000, 0, 0)
+                                  " shorten from tail
+                                  return '…'.matchstr(a:text, '.\{'.a:minwidth.'}$')
+                                else
+                                  " shorten from beginning of string
+                                  return matchstr(a:text, '^.\{'.a:minwidth.'}').'…'
+                                endif
+                              else
+  264              0.000555     return a:text
+                              endif
+
+FUNCTION  270()
+Called 2 times
+Total time:   0.000005
+ Self time:   0.000005
+
+count  total (s)   self (s)
+    2              0.000004     return '.. (up a dir)'
+
+FUNCTION  271()
+Called 28 times
+Total time:   0.000519
+ Self time:   0.000519
+
+count  total (s)   self (s)
+   28              0.000151     let newObj = copy(self)
+   28              0.000087     let newObj.nerdtree = a:nerdtree
+   28              0.000061     let newObj.subject = a:subject
+   28              0.000062     let newObj.action = a:action
+   28              0.000061     let newObj.params = a:params
+   28              0.000041     return newObj
+
+FUNCTION  274()
+Called 28 times
+Total time:   0.000303
+ Self time:   0.000303
+
+count  total (s)   self (s)
+   28              0.000141     if !exists("s:refreshListenersMap")
+                                    let s:refreshListenersMap = {}
+                                endif
+   28              0.000047     return s:refreshListenersMap
+
+FUNCTION  275()
+Called 28 times
+Total time:   0.000684
+ Self time:   0.000381
+
+count  total (s)   self (s)
+   28   0.000484   0.000181     let listenersMap = s:Notifier.GetListenersMap()
+   28              0.000170     return get(listenersMap, a:name, [])
+
+FUNCTION  airline#extensions#keymap#status()
+Called 132 times
+Total time:   0.002201
+ Self time:   0.002201
+
+count  total (s)   self (s)
+  132              0.001050   if (get(g:, 'airline#extensions#keymap#enabled', 1) && has('keymap'))
+  132              0.001006     return printf('%s', (!empty(&keymap) ? (g:airline_symbols.keymap . ' '. &keymap) : ''))
+                              else
+                                return ''
+                              endif
+
+FUNCTION  <SNR>59_NERDTreeGetFileGitStatusKey()
+Called 4 times
+Total time:   0.000065
+ Self time:   0.000065
+
+count  total (s)   self (s)
+    4              0.000018     if a:us ==# '?' && a:them ==# '?'
+                                    return 'Untracked'
+                                elseif a:us ==# ' ' && a:them ==# 'M'
+    4              0.000017         return 'Modified'
+                                elseif a:us =~# '[MAC]'
+                                    return 'Staged'
+                                elseif a:us ==# 'R'
+                                    return 'Renamed'
+                                elseif a:us ==# 'U' || a:them ==# 'U' || a:us ==# 'A' && a:them ==# 'A' || a:us ==# 'D' && a:them ==# 'D'
+                                    return 'Unmerged'
+                                elseif a:them ==# 'D'
+                                    return 'Deleted'
+                                elseif a:us ==# '!'
+                                    return 'Ignored'
+                                else
+                                    return 'Unknown'
+                                endif
+
+FUNCTIONS SORTED ON TOTAL TIME
+count  total (s)   self (s)  function
+    2   0.086500   0.000281  <SNR>59_CursorHoldUpdate()
+   16   0.079523   0.060021  170()
+   28   0.069624   0.000655  49()
+   28   0.066702   0.001100  273()
+   28   0.064399   0.001038  NERDTreeGitStatusRefreshListener()
+   28   0.063180   0.003613  NERDTreeGetGitStatusPrefix()
+    2   0.050052   0.003239  NERDTreeGitStatusRefresh()
+  128   0.029047   0.018094  <SNR>118_OnCursorMovedNormalMode()
+  128   0.022712             <SNR>87_Highlight_Matching_Pair()
+  132   0.022362   0.019475  airline#extensions#whitespace#check()
+  134   0.019113             airline#check_mode()
+  924   0.016789             airline#util#append()
+   28   0.015681   0.012700  141()
+    2   0.012717   0.000038  NERDTreeRender()
+    2   0.012679   0.000048  nerdtree#renderView()
+    2   0.012631   0.000026  241()
+    2   0.012605   0.000585  262()
+    2   0.011411   0.000026  140()
+  128   0.010953   0.001259  <SNR>118_AllowedToCompleteInCurrentBuffer()
+  128   0.010602             <SNR>109_wordcount_update()
+
+FUNCTIONS SORTED ON SELF TIME
+count  total (s)   self (s)  function
+   16   0.079523   0.060021  170()
+  128              0.022712  <SNR>87_Highlight_Matching_Pair()
+  132   0.022362   0.019475  airline#extensions#whitespace#check()
+  134              0.019113  airline#check_mode()
+  128   0.029047   0.018094  <SNR>118_OnCursorMovedNormalMode()
+  924              0.016789  airline#util#append()
+   28   0.015681   0.012700  141()
+  128              0.010602  <SNR>109_wordcount_update()
+  128   0.009694   0.008618  <SNR>118_AllowedToCompleteInBuffer()
+  264              0.006277  airline#util#shorten()
+  662              0.005185  airline#util#wrap()
+  132              0.004768  airline#parts#ffenc()
+  132              0.004652  airline#parts#spell()
+  134              0.004313  airline#statusline()
+   60   0.008513   0.004123  51()
+   28   0.063180   0.003613  NERDTreeGetGitStatusPrefix()
+    2   0.050052   0.003239  NERDTreeGitStatusRefresh()
+   52   0.005650   0.002602  38()
+    2              0.002446  nerdtree#exec()
+  132              0.002201  airline#extensions#keymap#status()
+
