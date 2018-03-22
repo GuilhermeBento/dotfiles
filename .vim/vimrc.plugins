@@ -246,7 +246,6 @@ call dein#add('ternjs/tern_for_vim')
 call dein#add('Galooshi/vim-import-js')
 call dein#add('pangloss/vim-javascript')
 let g:javascript_plugin_jsdoc = 1
-call dein#add('mxw/vim-jsx')
 
 
 call dein#add('tpope/vim-markdown')
