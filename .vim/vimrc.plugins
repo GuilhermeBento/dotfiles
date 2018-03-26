@@ -25,10 +25,10 @@ call dein#add('terryma/vim-multiple-cursors')
 " plugins/30-general/plugins/airline/files -------------------
 
 " call dein#add('vim-airline/vim-airline')
-" call dein#add('vim-airline/vim-airline-themes')
-
-" let g:airline_powerline_fonts=1
-" let g:airline_theme='light' " dark simple badwolf solarized solarized2
+"  call dein#add('vim-airline/vim-airline-themes')
+" 
+"  let g:airline_powerline_fonts=1
+"  let g:airline_theme='light' " dark simple badwolf solarized solarized2
 " set noshowmode
 
 " plugins/30-general/plugins/greplace/files -------------------
@@ -132,6 +132,7 @@ end
 nmap <leader>o :Utl <space>
 
 " plugins/30-general/plugins/xterm-color-table/files -------------------
+call dein#add("drewtempelmeyer/palenight.vim")
 
 " call dein#add('guns/xterm-color-table.vim')
 
@@ -145,6 +146,7 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_server_python_interpreter = '/usr/local/bin/python'
 
 let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>', '<Up>']
@@ -244,6 +246,7 @@ call dein#add('mattn/emmet-vim')
 call dein#add('w0rp/ale')
 call dein#add('ternjs/tern_for_vim')
 call dein#add('Galooshi/vim-import-js')
+call dein#add('mxw/vim-jsx')
 call dein#add('pangloss/vim-javascript')
 let g:javascript_plugin_jsdoc = 1
 
@@ -300,7 +303,7 @@ let g:blockle_mapping = '<Leader>B'
 " 
 " GOLANG support
 call dein#add('fatih/vim-go')
-call dein#add('sebdah/vim-delve')
+" call dein#add('sebdah/vim-delve')
 
 " plugins/70-languages/plugins/tmux/files -------------------
 

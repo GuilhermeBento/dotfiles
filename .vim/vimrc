@@ -28,6 +28,8 @@ syntax enable
 set noeol
 set binary
 
+" Fix safe write issue with webpack
+set backupcopy=yes
 " utf-8/unicode support
 " requires Vim to be compiled with Multibyte support, you can check that by
 " running `vim --version` and checking for +multi_byte.
@@ -71,6 +73,7 @@ set cinoptions=:0,(s,u0,U1,g0,t0 " some indentation options ':h cinoptions' for 
 set modelines=5         " number of lines to check for vim: directives at the start/end of file
 "set fixdel                 " fix terminal code for delete (if delete is broken but backspace works)
 set autoindent          " automatically indent new line
+set smartindent " automatically indent new line
 
 set ts=4                " number of spaces in a tab
 set sw=4                " number of spaces for indent
@@ -280,7 +283,8 @@ let NERDTreeShowHidden=1
 
 " Use the Solarized Dark theme
 set background=dark
-colorscheme palenight 
+colorscheme palenight
+
 let g:solarized_termtrans=1
 " Make Vim more useful
 set nocompatible
@@ -321,7 +325,7 @@ set number
 " Enable syntax highlighting
 syntax on
 " Make tabs as wide as two spaces
-set tabstop=2
+set tabstop=4
 " Show “invisible” characters
 " set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
  
