@@ -24,12 +24,12 @@ call dein#add('terryma/vim-multiple-cursors')
  
 " plugins/30-general/plugins/airline/files -------------------
 
-" call dein#add('vim-airline/vim-airline')
-"  call dein#add('vim-airline/vim-airline-themes')
-" 
-"  let g:airline_powerline_fonts=1
-"  let g:airline_theme='light' " dark simple badwolf solarized solarized2
-" set noshowmode
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+
+let g:airline_powerline_fonts=1
+let g:airline_theme='light' " dark simple badwolf solarized solarized2
+set noshowmode
 
 " plugins/30-general/plugins/greplace/files -------------------
 
@@ -154,7 +154,7 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>', '<Up>']
 " plugins/40-completion/plugins/20-snippets/files -------------------
 
 call dein#add('ervandew/supertab')
-call dein#add('honza/vim-snippets')
+" call dein#add('honza/vim-snippets')
 call dein#add('epilande/vim-react-snippets')
 call dein#add('SirVer/ultisnips')
 
