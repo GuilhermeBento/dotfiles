@@ -55,6 +55,7 @@ set laststatus=2        " always show the status line
 
 " highlight spell errors
 hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
+set spell spelllang=en_us
 
 " behavior
                         " ignore these files when completing names and in
