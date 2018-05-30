@@ -61,6 +61,6 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 source ~/.profile
 source "${HOME}/.bash_completion_custom/alacritty"
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+# test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"

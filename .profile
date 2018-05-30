@@ -1,6 +1,6 @@
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+#export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
