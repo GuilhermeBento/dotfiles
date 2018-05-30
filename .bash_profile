@@ -1,6 +1,10 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
+# Export shared libraries
+export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
+
+
 # Add GOPATH
 
 export GOPATH="/Users/guilherme/svn/be/trunk/go";
