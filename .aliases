@@ -19,7 +19,7 @@ alias j="jobs"
 alias top="top -o cpu"
 
 # Path shortucts
-alias backoffice="~/svn/be/trunk/backoffice2"
+alias backoffice="~/repos/be/trunk/backoffice2"
 alias papi="~/svn/be/trunk/go/src/partnerapi"
 alias pine="~/svn/be/trunk/pine-casino"
 alias go-svn="~/svn/be/trunk/go"
