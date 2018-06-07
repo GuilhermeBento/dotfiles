@@ -7,8 +7,8 @@ export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
 
 # Add GOPATH
 
-export GOPATH="/Users/guilherme/svn/be/trunk/go";
-export GOROOT="/usr/local/Cellar/go/1.9.4/libexec"
+export GOPATH="/Users/guilherme/repos/be/trunk/go";
+export GOROOT="/usr/lib/go"
 export DENV="local"
 export GAMECENTER="99"
 # export GOPATH=/Users/guilherme/svn/be/trunk/go/src/vendor:$GOPATH;
