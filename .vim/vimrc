@@ -45,8 +45,8 @@ set textwidth=0         " Do not wrap words (insert)
 set nowrap              " Do not wrap words (view)
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
-" set ruler               " line and column number of the cursor position
- set wildmenu            " enhanced command completion
+set ruler               " line and column number of the cursor position
+set wildmenu            " enhanced command completion
 set visualbell          " use visual bell instead of beeping
 set laststatus=2        " always show the status line
 " set listchars=tab:▷⋅,trail:·,eol:$
@@ -60,7 +60,7 @@ set spell spelllang=en_us
 " behavior
                         " ignore these files when completing names and in
                         " explorer
-set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,node_modules,build,coverage
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,node_modules,build,coverage,ctags
 set shell=/bin/bash     " use bash for shell commands
 set autowriteall        " Automatically save before commands like :next and :make
 set hidden              " enable multiple modified buffers
@@ -127,6 +127,12 @@ noremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" Disable arrow movement, resize splits instead.
+nnoremap <Up>    :resize +2<CR>
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
+
 " extended '%' mapping for if/then/else/end etc
 runtime macros/matchit.vim
 
@@ -139,8 +145,9 @@ map Q gq
 " toggle highlight trailing whitespace
 nmap <silent> <leader>s :set nolist!<CR>
 
+" Using it in multiple cursors
 " Ctrl-N to disable search match highlight
-nmap <silent> <C-N> :silent noh<CR>
+" nmap <silent> <C-N> :silent noh<CR>
 
 " Ctrol-E to switch between 2 last buffers
 nmap <C-E> :b#<CR>
@@ -159,7 +166,6 @@ nmap <leader>d :diffupdate<CR>
 nmap <leader>dp :diffput<CR>
 nmap <leader>dg :diffget<CR>
 
-" driving me insane this thing
 command Q q
 command Qa qa
 command QA qa
@@ -337,9 +343,6 @@ set synmaxcol=256
 
 let g:loaded_syntastic_javascript_jsxhint_checker = 1
 
-" Set python path to youcompleteme Plugin
-
-let g:ycm_path_to_python_interpreter="/usr/bin/python3"
 
 " Accept js files as jsx at all times
 let g:jsx_ext_required = 0

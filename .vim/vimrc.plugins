@@ -60,7 +60,7 @@ call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('tpope/vim-fugitive')
 
 " signify
-" call dein#add('mhinz/vim-signify') 
+call dein#add('mhinz/vim-signify') 
 
 " plugins/30-general/plugins/nerdtools/plugins/nerdtree/plugins/20-nerdtree-tabs/files -------------------
 
@@ -140,7 +140,9 @@ call dein#add("drewtempelmeyer/palenight.vim")
 " plugins/40-completion/plugins/10-youcompleteme/files -------------------
 
 call dein#add('Valloric/YouCompleteMe', {'build': './install.py --go-completer --js-completer  --tern-completer'})
-
+"
+" Set python path to youcompleteme Plugin
+let g:ycm_path_to_python_interpreter="/usr/bin/python3"
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_complete_in_comments = 1
