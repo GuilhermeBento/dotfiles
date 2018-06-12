@@ -117,7 +117,7 @@ set foldmethod=indent
 
 " concealing
 set concealcursor=
-set conceallevel=2
+set conceallevel=0
 
 " Split window mappings
 noremap <C-J> <C-W><C-J>

@@ -325,6 +325,8 @@ call dein#add('leafgarland/typescript-vim')
 
 call dein#add('tpope/vim-surround')
 
+call dein#add('tpope/vim-commentary')
+
 " Plugin tmux navigator 
 "
 call dein#add('christoomey/vim-tmux-navigator')
