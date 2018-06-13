@@ -7,7 +7,7 @@ export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
 
 # Add GOPATH
 
-export GOPATH="/Users/guilherme/repos/be/trunk/go";
+export GOPATH="/home/guilherme/repos/be/trunk/go";
 export GOROOT="/usr/lib/go"
 export DENV="local"
 export GAMECENTER="99"

@@ -121,3 +121,9 @@ node_modules
 
 # Ignore tags folder
 tags
+
+# GO lang
+exec/
+log/
+bin/
+
