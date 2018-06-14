@@ -19,7 +19,9 @@ augroup spellcheck
     " Ignore CamelCase words when spell checking
     fun! IgnoreCamelCaseSpell()
         syn match CamelCase /\<[A-Z][a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
+        syn match snakeCase /\<[a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
         syn cluster Spell add=CamelCase
+        syn cluster Spell add=snakeCase
     endfun
     autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 augroup END

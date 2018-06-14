@@ -99,7 +99,9 @@ jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources
 unset jscbin;
 
 # Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
+# alias c="tr -d '\n' | pbcopy"
+alias c="tr -d '\n' | xclip -sel clip"
+alias copy="xclip -sel clip"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
