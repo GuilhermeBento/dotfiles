@@ -22,7 +22,7 @@ endif
 
 " plugins/20-settings/files -------------------
 
-syntax enable 
+syntax enable
 
 " prevent vim from adding that stupid empty line at the end of every file
 set noeol
@@ -80,7 +80,7 @@ set ts=4                " number of spaces in a tab
 set sw=4                " number of spaces for indent
 set et                  " expand tabs into spaces
 
-set formatoptions-=cro  " disable automatic comment insertion 
+set formatoptions-=cro  " disable automatic comment insertion
 
 set ttimeoutlen=0      " fast Esc to normal mode
 set timeoutlen=1000
@@ -139,7 +139,7 @@ nnoremap <Right> :vertical resize -2<CR>
 runtime macros/matchit.vim
 
 " search for visually hightlighted text
-vnoremap <c-f> y<ESC>/<c-r>"<CR>  
+vnoremap <c-f> y<ESC>/<c-r>"<CR>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -310,7 +310,7 @@ set gdefault
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
 " Change mapleader
-let mapleader="<space>"
+let mapleader=","
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
@@ -335,13 +335,13 @@ syntax on
 set tabstop=4
 " Show “invisible” characters
 " set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
- 
+
 " Increase performance with syntax on
 set nocursorcolumn
 set nocursorline
 set norelativenumber
 syntax sync minlines=256
-set synmaxcol=256  
+set synmaxcol=256
 
 let g:loaded_syntastic_javascript_jsxhint_checker = 1
 

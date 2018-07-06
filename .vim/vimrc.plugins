@@ -259,7 +259,11 @@ call dein#add('pangloss/vim-javascript')
 let g:javascript_plugin_jsdoc = 1
 
 
+" Web
 call dein#add('tpope/vim-markdown')
+
+call dein#add('mattn/emmet-vim')
+let g:user_emmet_expandabbr_key = '<tab>'
 
 " plugins/70-languages/plugins/raml/files -------------------
 
