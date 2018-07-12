@@ -15,4 +15,3 @@ tmux split-window -v
 tmux new-window -t "$SESSION" -a -n general-purpose 
 tmux split-window -h
 tmux select-pane -t 0
-tmux resize-pane -R 50
