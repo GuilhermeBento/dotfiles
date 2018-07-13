@@ -211,3 +211,4 @@ alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:   Shows ap
 httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
 
 alias vi='vim'
+alias ctags='ctags -R --exclude=.git --exclude=node_modules --exclude=tests --exclude=*.css'
