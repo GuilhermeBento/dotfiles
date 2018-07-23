@@ -113,9 +113,11 @@ set undofile
 set undodir=~/.backup/undo/,~/tmp,.
 
 " folding
-set foldcolumn=0        " columns for folding
-set foldlevel=9
-set foldmethod=indent
+set nofoldenable " disable folding
+" set foldcolumn=0        " columns for folding
+" set foldlevel=9
+" set foldmethod=indent
+
 
 " concealing
 set concealcursor=
