@@ -63,7 +63,7 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # Add profile with rvm configs
 source ~/.profile
-source "${HOME}/.bash_completion_custom/alacritty"
+# source "${HOME}/.bash_completion_custom/alacritty"
 
 # test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
