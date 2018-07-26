@@ -14,3 +14,6 @@ sudo apt-get install -y pavucontrol
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/installer.sh
 sh ~/.vim/installer.sh dein
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
