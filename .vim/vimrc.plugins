@@ -155,12 +155,13 @@ let g:ycm_server_python_interpreter = '/usr/bin/python3'
 let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>', '<Up>']
 
+call dein#add('ervandew/supertab')
 " plugins/40-completion/plugins/20-snippets/files -------------------
 
-call dein#add('ervandew/supertab')
-" call dein#add('honza/vim-snippets')
-call dein#add('epilande/vim-react-snippets')
 call dein#add('SirVer/ultisnips')
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+" call dein#add('honza/vim-snippets')
+" call dein#add('epilande/vim-react-snippets')
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -207,8 +208,8 @@ let g:ctrlp_map = ''
 call dein#add('rking/ag.vim')
 
 " plugins/50-fuzzy-tools/plugins/02-fzf/files -------------------
-
-call dein#add('junegunn/fzf.vim')
+" call dein#add('junegunn/fzf')
+call dein#add('junegunn/fzf.vim', { 'dir': '~/.fzf', 'do': './install --all' })
 
 if executable("ag") && ('' == $FZF_DEFAULT_COMMAND)
   let $FZF_DEFAULT_COMMAND = 'ag -l --hidden --ignore .git -g ""'

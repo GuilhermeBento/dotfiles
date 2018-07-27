@@ -142,6 +142,8 @@ runtime macros/matchit.vim
 
 " search for visually hightlighted text
 vnoremap <c-f> y<ESC>/<c-r>"<CR>
+" search and replace with selected text ( Uses h register )
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -275,6 +277,7 @@ nnoremap <Leader>Yp :let @*=expand("%")<cr>:echo "Copied file path to clipboard"
 nnoremap <Leader>Yf :let @*=expand("%:t")<cr>:echo "Copied file name to clipboard"<cr>
 " Copy current buffer path without filename to system clipboard
 nnoremap <Leader>Yd :let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>
+
 
 " keep at least  5 lines above/below cursor (when scrolling)
 set scrolloff=5

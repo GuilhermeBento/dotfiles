@@ -11,6 +11,9 @@ sudo apt-get -y install python-dev python3-dev
 sudo apt-get install -y vim-gtk
 sudo apt-get install -y tmux autojump
 sudo apt-get install -y pavucontrol
+sudo apt-get install silversearcher-ag
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/installer.sh
 sh ~/.vim/installer.sh dein
+
+
