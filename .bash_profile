@@ -4,10 +4,12 @@ export PATH="$HOME/bin:$PATH";
 # Export shared libraries
 export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
 
+# Flush Bash_history After Each Command
+export PROMPT_COMMAND='history -a'
 
 # Add GOPATH
 
-export GOPATH="/home/guilherme/svn/be/trunk/go";
+export GOPATH="/home/guilherme/svn/be/trunk/go"
 export GOROOT="/usr/lib/go"
 export DENV="local"
 export GAMECENTER="99"
