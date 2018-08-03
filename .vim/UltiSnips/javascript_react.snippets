@@ -3,7 +3,6 @@ snippet rrcc "React Redux Class Component" b
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styles from './${2:$1}.css';
 
 class ${1:`!v expand('%:t:r')`} extends Component {
 	static propTypes = {
@@ -18,24 +17,27 @@ class ${1:`!v expand('%:t:r')`} extends Component {
 
 	render() {
 		return (
-			<div className={styles.base}>
+			<div>
 				$3
 			</div>
 		);
 	}
 }
 
-const mapStateToProps(state) => {
+const mapStateToProps => (state) => {
 	return {};
 };
 
-export default connect(mapStateToProps)($1);
+const mapDispatchToProps => (state) => {
+	return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)($1);
 endsnippet
 
 snippet rcc "React Class Component" b
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './${2:$1}.css';
 
 class ${1:`!v expand('%:t:r')`} extends Component {
 	static propTypes = {
@@ -49,7 +51,7 @@ class ${1:`!v expand('%:t:r')`} extends Component {
 
 	render() {
 		return (
-			<div className={styles.base}>
+			<div>
 				$3
 			</div>
 		);
@@ -194,8 +196,8 @@ endsnippet
 
 snippet mdtp "Map dispatch to props" b
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-  };
+	return {
+	};
 }
 endsnippet
 

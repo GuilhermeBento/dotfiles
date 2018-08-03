@@ -34,3 +34,12 @@ au FileType python setl sw=2 sts=2 et
 au FileType scss setl sw=2 sts=2 et
 au Filetype javascript setl ts=4 sw=4 sts=0 expandtab
 au FileType javascript.jsx setl ts=4 sw=4 sts=0 expandtab commentstring={/*\ %s\ */}
+"
+" Show leading white space that includes spaces, and trailing whites pace.
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
