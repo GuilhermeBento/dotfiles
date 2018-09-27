@@ -2,6 +2,9 @@ if &compatible
   set nocompatible
 endif
 
+" Change mapleader
+let mapleader=","
+
 set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.vim/dein'))
@@ -314,8 +317,6 @@ set ttyfast
 set gdefault
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
-" Change mapleader
-let mapleader=","
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps

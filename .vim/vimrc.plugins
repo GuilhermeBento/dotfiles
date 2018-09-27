@@ -21,7 +21,7 @@ call dein#add('jiangmiao/auto-pairs')
 " plugins/terryma/vim-multiple-cursors
 
 call dein#add('terryma/vim-multiple-cursors')
- 
+
 " plugins/30-general/plugins/airline/files -------------------
 
 call dein#add('vim-airline/vim-airline')
@@ -250,9 +250,15 @@ call dein#add('mattn/emmet-vim')
 " plugins/70-languages/plugins/javascript/files -------------------
 
 call dein#add('w0rp/ale')
+" Fix files with prettier, and then ESLint.
+
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'javascript': ['eslint'] }
+
+let g:ale_completion_enabled = 1
+
 call dein#add('ternjs/tern_for_vim')
 
-" Global node path 
+" Global node path
 let g:tern#command = ['node', '/usr/local/lib/node_modules/tern_for_vim/node_modules/tern/bin/tern', '--no-por t-file']
 
 call dein#add('Galooshi/vim-import-js')
@@ -314,7 +320,7 @@ let g:blockle_mapping = '<Leader>B'
 
 " vim-rspec
 " map <Leader>r :call RunNearestSpec()<CR>
-" 
+"
 " GOLANG support
 call dein#add('fatih/vim-go')
 " call dein#add('sebdah/vim-delve')
@@ -333,7 +339,7 @@ call dein#add('tpope/vim-surround')
 
 call dein#add('tpope/vim-commentary')
 
-" Plugin tmux navigator 
+" Plugin tmux navigator
 "
 call dein#add('christoomey/vim-tmux-navigator')
 
