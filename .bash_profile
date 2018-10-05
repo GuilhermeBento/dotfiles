@@ -7,16 +7,6 @@ export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
 # Flush Bash_history After Each Command
 export PROMPT_COMMAND='history -a'
 
-# Add GOPATH
-
-export GOPATH="/home/guilherme/svn/be/trunk/go"
-export GOROOT="/usr/lib/go"
-export DENV="local"
-export GAMECENTER="99"
-# export GOPATH=/Users/guilherme/svn/be/trunk/go/src/vendor:$GOPATH;
-export PATH="$GOROOT/bin:$PATH";
-export PATH="$GOPATH:$PATH";
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -41,12 +31,19 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
-# Add tab completion for many Bash commands
-if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-	source "$(brew --prefix)/share/bash-completion/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-	source /etc/bash_completion;
-fi;
+#xmodmap
+if [ -n "${DISPLAY+x}" ]; then
+  xmodmap -e "clear Lock"
+  xmodmap -e "keycode 62 = Escape"
+  xmodmap -e "keycode 66 = BackSpace"
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Yarn config
+# yarn config set prefix $(npm config get prefix)
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
