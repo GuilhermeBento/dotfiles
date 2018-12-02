@@ -31,13 +31,6 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
-#xmodmap
-if [ -n "${DISPLAY+x}" ]; then
-  xmodmap -e "clear Lock"
-  xmodmap -e "keycode 62 = Escape"
-  xmodmap -e "keycode 66 = BackSpace"
-fi
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

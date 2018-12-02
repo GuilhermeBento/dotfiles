@@ -208,8 +208,8 @@ let g:ctrlp_map = ''
 call dein#add('rking/ag.vim')
 
 " plugins/50-fuzzy-tools/plugins/02-fzf/files -------------------
-" call dein#add('junegunn/fzf')
-call dein#add('junegunn/fzf.vim', { 'dir': '~/.fzf', 'do': './install --all' })
+call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' })
+call dein#add('junegunn/fzf.vim')
 
 if executable("ag") && ('' == $FZF_DEFAULT_COMMAND)
   let $FZF_DEFAULT_COMMAND = 'ag -l --hidden --ignore .git -g ""'
