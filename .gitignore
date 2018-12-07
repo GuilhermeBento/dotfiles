@@ -125,5 +125,7 @@ tags
 # GO lang
 exec/
 log/
-bin/
+dist/
 
+.tern-port
+graphql.config.json
