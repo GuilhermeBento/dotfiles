@@ -60,7 +60,10 @@ call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('tpope/vim-fugitive')
 
 " signify
-call dein#add('mhinz/vim-signify') 
+call dein#add('mhinz/vim-signify')
+
+" graphql
+call dein#add("jparise/vim-graphql")
 
 " plugins/30-general/plugins/nerdtools/plugins/nerdtree/plugins/20-nerdtree-tabs/files -------------------
 
