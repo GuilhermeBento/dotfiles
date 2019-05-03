@@ -11,15 +11,12 @@ let mapleader = ","
 let maplocalleader = "\\"
 
 " plugins/craigemery/vim-autotag
-
 call dein#add('craigemery/vim-autotag')
 
 " plugins/jiangmiao/auto-pairs
-
 call dein#add('jiangmiao/auto-pairs')
 
 " plugins/terryma/vim-multiple-cursors
-
 call dein#add('terryma/vim-multiple-cursors')
 
 " plugins/30-general/plugins/airline/files -------------------
@@ -62,7 +59,7 @@ call dein#add('tpope/vim-fugitive')
 " signify
 call dein#add('mhinz/vim-signify')
 
-" graphql
+" plugins/jparise/vim-graphql
 call dein#add("jparise/vim-graphql")
 
 " plugins/30-general/plugins/nerdtools/plugins/nerdtree/plugins/20-nerdtree-tabs/files -------------------
@@ -101,28 +98,13 @@ call dein#add('xolox/vim-misc')
 " if has('gui_running')
 "   nmap <leader>SR :RestartVim<CR>
 " endif
- 
+
 " plugins/xolox/vim-notes
- 
+
 call dein#add('xolox/vim-notes')
 
 " Set notes store directories
 let g:notes_directories = ['~/Google Drive/vimNotes', '~/Documents/Notes']
-
-" plugins/30-general/plugins/switch/files -------------------
-
-" call dein#add('AndrewRadev/switch.vim')
-
-" making some of the switches defined for ruby work in HAML files
-" autocmd FileType haml let b:switch_definitions =
-"       \ [
-"       \   g:switch_builtins.ruby_hash_style,
-"       \   g:switch_builtins.ruby_string,
-"       \   g:switch_builtins.true_false,
-"       \   g:switch_builtins.true_false,
-"       \ ]
-
-" nnoremap ` :Switch<cr>
 
 " plugins/30-general/plugins/utl/files -------------------
 
@@ -137,8 +119,6 @@ nmap <leader>o :Utl <space>
 
 " plugins/30-general/plugins/xterm-color-table/files -------------------
 call dein#add("drewtempelmeyer/palenight.vim")
-
-" call dein#add('guns/xterm-color-table.vim')
 
 " plugins/40-completion/plugins/10-youcompleteme/files -------------------
 
@@ -206,7 +186,7 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " prevent CtrlP from adding the default map
 let g:ctrlp_map = ''
-" 
+
 " plugins/50-fuzzy-tools/plugins/ag-------------------
 call dein#add('rking/ag.vim')
 
@@ -278,28 +258,7 @@ let g:user_emmet_expandabbr_key = '<tab>'
 
 " plugins/70-languages/plugins/raml/files -------------------
 
-" call dein#add('in3d/vim-raml')
-
-" plugins/70-languages/plugins/ruby/files -------------------
-
-" Ruby syntax support
-" call dein#add('vim-ruby/vim-ruby')
-
-" A custom text object for selecting ruby blocks (ar/ir)
-" call dein#add('kana/vim-textobj-user')
-" call dein#add('nelstrom/vim-textobj-rubyblock')
-
-" toggle ruby blocks style
-" call dein#add('vim-scripts/blockle.vim')
-
-" bundler integration (e.g. :Bopen)
-" call dein#add('tpope/vim-bundler')
-
-" rake integration
-" call dein#add('tpope/vim-rake')
-
-" ruby refactoring
-" call dein#add('ecomba/vim-ruby-refactoring')
+call dein#add('in3d/vim-raml')
 
 let g:blockle_mapping = '<Leader>B'
 
@@ -307,23 +266,6 @@ let g:blockle_mapping = '<Leader>B'
 
 " call dein#add('tpope/vim-haml')
 
-" plugins/70-languages/plugins/ruby/plugins/9-rails/files -------------------
-
-" Rails support
-" call dein#add('tpope/vim-rails')
-
-" apidock.com docs integration
-" call dein#add('apidock.vim')
-
-" lightweight Rspec runner for Vim
-" call dein#add('thoughtbot/vim-rspec')
-
-" Rails i18n extraction plugin
-" call dein#add('stefanoverna/vim-i18n')
-
-" vim-rspec
-" map <Leader>r :call RunNearestSpec()<CR>
-"
 " GOLANG support
 call dein#add('fatih/vim-go')
 " call dein#add('sebdah/vim-delve')
