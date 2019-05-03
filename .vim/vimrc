@@ -79,8 +79,8 @@ set modelines=5         " number of lines to check for vim: directives at the st
 " set smartindent " automatically indent new line
 filetype plugin indent on
 
-set ts=4                " number of spaces in a tab
-set sw=4                " number of spaces for indent
+set ts=2                " number of spaces in a tab
+set sw=2                " number of spaces for indent
 set et                  " expand tabs into spaces
 
 set formatoptions-=cro  " disable automatic comment insertion
