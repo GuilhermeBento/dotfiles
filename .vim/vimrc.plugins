@@ -122,7 +122,7 @@ call dein#add("drewtempelmeyer/palenight.vim")
 
 " plugins/40-completion/plugins/10-youcompleteme/files -------------------
 
-call dein#add('Valloric/YouCompleteMe', {'build': './install.py --go-completer --js-completer  --tern-completer'})
+call dein#add('Valloric/YouCompleteMe', {'build': './install.py --go-completer --ts-completer  --tern-completer'})
 "
 " Set python path to youcompleteme Plugin
 let g:ycm_path_to_python_interpreter="/usr/bin/python3"

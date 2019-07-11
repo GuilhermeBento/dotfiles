@@ -90,7 +90,7 @@
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
-  editor = /usr/local/bin/vim
+  editor = /usr/bin/vim
 
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
