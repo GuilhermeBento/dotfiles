@@ -60,3 +60,6 @@ source ~/.profile
 # test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+
+# start ssh agent with keychain
+eval $(keychain --eval id_rsa)
