@@ -67,7 +67,6 @@ fabric.properties
 
 *.gem
 *.rbc
-/.config
 /coverage/
 /InstalledFiles
 /pkg/
