@@ -182,7 +182,7 @@ bar {
 # }
 
 # Screen shot
-bindsym --release Print exec "scrot /home/guilherme/Pictures/Screenshots -s -e 'xclip -selection clipboard -t image/png -i $n'"
+bindsym --release Print exec "scrot -s -e 'xclip -selection clipboard -t image/png -i /home/guilherme/Pictures/Screenshots/$n'"
 
 
 
