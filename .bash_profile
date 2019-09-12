@@ -53,5 +53,9 @@ source ~/.profile
 
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
+# stack
+export PATH="/home/guilherme/.local/bin:$PATH"
+
+
 # start ssh agent with keychain
 eval $(keychain --eval id_rsa)
