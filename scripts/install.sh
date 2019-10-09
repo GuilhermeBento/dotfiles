@@ -12,6 +12,7 @@ sudo apt-get install -y vim-gtk
 sudo apt-get install -y tmux autojump
 sudo apt-get install -y pavucontrol
 sudo apt-get install silversearcher-ag
+sudl apt-get install -y keychain
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/installer.sh
 sh ~/.vim/installer.sh dein
