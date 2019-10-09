@@ -120,34 +120,16 @@ nmap <leader>o :Utl <space>
 " plugins/30-general/plugins/xterm-color-table/files -------------------
 call dein#add("drewtempelmeyer/palenight.vim")
 
-" plugins/40-completion/plugins/10-youcompleteme/files -------------------
-
-call dein#add('Valloric/YouCompleteMe', {'build': './install.py --go-completer --ts-completer  --tern-completer'})
-"
-" Set python path to youcompleteme Plugin
-let g:ycm_path_to_python_interpreter="/usr/bin/python3"
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
-
-let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>', '<Up>']
+call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})
 
 call dein#add('ervandew/supertab')
 " plugins/40-completion/plugins/20-snippets/files -------------------
 
 call dein#add('SirVer/ultisnips')
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
-" call dein#add('honza/vim-snippets')
-" call dein#add('epilande/vim-react-snippets')
 
 " make YCM compatible with UltiSnips (using supertab)
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -240,20 +222,12 @@ let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'javascr
 
 let g:ale_completion_enabled = 1
 
-call dein#add('ternjs/tern_for_vim')
+call dein#add('sheerun/vim-polyglot')
 
-" Global node path
-let g:tern#command = ['node', '/usr/local/lib/node_modules/tern_for_vim/node_modules/tern/bin/tern', '--no-por t-file']
-
-call dein#add('Galooshi/vim-import-js')
-call dein#add('pangloss/vim-javascript')
-call dein#add('mxw/vim-jsx')
 let g:javascript_plugin_jsdoc = 1
-
 
 " Web
 call dein#add('tpope/vim-markdown')
-
 call dein#add('mattn/emmet-vim')
 let g:user_emmet_expandabbr_key = '<tab>'
 
@@ -265,19 +239,12 @@ let g:blockle_mapping = '<Leader>B'
 
 " plugins/70-languages/plugins/ruby/plugins/1-haml/files -------------------
 
-" call dein#add('tpope/vim-haml')
-
 " GOLANG support
-call dein#add('fatih/vim-go')
-" call dein#add('sebdah/vim-delve')
+" call dein#add('fatih/vim-go')
 
 " plugins/70-languages/plugins/tmux/files -------------------
 
 call dein#add('tsaleh/vim-tmux')
-
-" plugins/70-languages/plugins/typescript/files -------------------
-
-call dein#add('leafgarland/typescript-vim')
 
 " plugin/vim-surround ---------
 
@@ -294,4 +261,3 @@ call dein#add('christoomey/vim-tmux-navigator')
 if filereadable(expand("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
 endif
-
