@@ -8,5 +8,5 @@ xmodmap -e "clear Lock"
 xmodmap -e "keycode 62 = Escape"
 xmodmap -e "keycode 66 = BackSpace"
 
-rm ../.Xmodmap
+rm -f ../.Xmodmap
 xmodmap -pke > ../.Xmodmap
