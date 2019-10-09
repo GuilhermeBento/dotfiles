@@ -58,4 +58,4 @@ export PATH="/home/guilherme/.local/bin:$PATH"
 
 
 # start ssh agent with keychain
-eval $(keychain --eval id_rsa)
+eval `keychain --eval --agents ssh id_rsa`
