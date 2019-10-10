@@ -10,9 +10,9 @@
 		"jsx",
 		"json",
 		"jsonc"
-	] /*hacks issue with ts errors*/,
-	"javascript.suggestionActions.enabled": true,
-	"javascript.validate.enable": true,
+	] /*hacks issue with ts errors disable for now and use eslint only*/,
+	"javascript.suggestionActions.enabled": false,
+	"javascript.validate.enable": false,
 	"typescript.suggestionActions.enabled": false,
 	"typescript.validate.enable": false,
 	"javascript.suggest.autoImports": true,
