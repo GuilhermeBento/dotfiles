@@ -10,9 +10,6 @@ call dein#add('Shougo/unite.vim')
 let mapleader = ","
 let maplocalleader = "\\"
 
-" plugins/craigemery/vim-autotag
-call dein#add('craigemery/vim-autotag')
-
 " plugins/jiangmiao/auto-pairs
 call dein#add('jiangmiao/auto-pairs')
 
@@ -39,10 +36,6 @@ call dein#add('sjl/gundo.vim')
 let g:gundo_close_on_revert = 1
 
 nmap <leader>u :GundoToggle<CR>
-
-" plugins/30-general/plugins/indent/lines -------------------
-
-call dein#add('Yggdroot/indentLine')
 
 " plugins/30-general/plugins/nerdtools/plugins/nerdtree/files -------------------
 
@@ -72,10 +65,6 @@ nmap <C-P> :NERDTreeTabsToggle<CR>
 " ,p to show current file in the tree
 nmap <leader>p :NERDTreeFind<CR>
 
-" plugins/30-general/plugins/nerdtools/plugins/netdcommenter/files -------------------
-
-" call dein#add('scrooloose/nerdcommenter')
-
 " ,/ to invert comment on the current line/selection
 nmap <leader>/ :call NERDComment(0, "invert")<cr>
 vmap <leader>/ :call NERDComment(0, "invert")<cr>
@@ -88,17 +77,7 @@ call dein#add('tpope/vim-repeat')
 " plugins/30-general/plugins/session/files -------------------
 
 call dein#add('xolox/vim-misc')
-" call dein#add('xolox/vim-session')
-
-" let g:session_autosave = 'no'
-" let g:session_autoload = 'no'
-
-" nmap <leader>SS :SaveSession
-" nmap <leader>SO :OpenSession
-" if has('gui_running')
-"   nmap <leader>SR :RestartVim<CR>
-" endif
-
+"
 " plugins/xolox/vim-notes
 
 call dein#add('xolox/vim-notes')
@@ -110,31 +89,12 @@ let g:notes_directories = ['~/Google Drive/vimNotes', '~/Documents/Notes']
 
 call dein#add('vim-scripts/utl.vim')
 
-" config help: <url:~/.vim/dein/.dein/plugin/utl_rc.vim#r=utl_cfg_hdl_scm_http>
-if has("mac")
-  let g:utl_cfg_hdl_scm_http_system = "!open '%u'"
-end
-
 nmap <leader>o :Utl <space>
 
 " plugins/30-general/plugins/xterm-color-table/files -------------------
 call dein#add("drewtempelmeyer/palenight.vim")
 
 call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})
-
-" call dein#add('ervandew/supertab')
-" plugins/40-completion/plugins/20-snippets/files -------------------
-
-call dein#add('SirVer/ultisnips')
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
-
-" make YCM compatible with UltiSnips (using supertab)
-" let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 if executable('ag')
   let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '-g', '']
@@ -190,7 +150,6 @@ let g:fzf_tags_command = 'ctags -R'
 
 " plugins/50-fuzzy-tools/plugins/02-fzf/install.sh -------------------
 
-" set rtp+=/usr/local/opt/fzf/
 set rtp+=~/.fzf
 
 " plugins/50-fuzzy-tools/plugins/10-fuzzy-files/fzf -------------------
@@ -208,19 +167,8 @@ nmap <leader>l :Lines<cr>
 " plugins/50-fuzzy-tools/plugins/50-fuzzy-tags/fzf -------------------
 
 nmap <leader>t :Tags<cr>
-nmap <localleader>t :BTags<cr>
 
 call dein#add('mattn/emmet-vim')
-
-" plugins/70-languages/plugins/javascript/files -------------------
-
-call dein#add('w0rp/ale')
-" Fix files with prettier, and then ESLint.
-"
-let b:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'javascript': ['eslint'] }
-
-let g:ale_completion_enabled = 1
 
 call dein#add('sheerun/vim-polyglot')
 
@@ -228,19 +176,12 @@ let g:javascript_plugin_jsdoc = 1
 
 " Web
 call dein#add('tpope/vim-markdown')
-call dein#add('mattn/emmet-vim')
-let g:user_emmet_expandabbr_key = '<tab>'
 
 " plugins/70-languages/plugins/raml/files -------------------
 
 call dein#add('in3d/vim-raml')
 
 let g:blockle_mapping = '<Leader>B'
-
-" plugins/70-languages/plugins/ruby/plugins/1-haml/files -------------------
-
-" GOLANG support
-" call dein#add('fatih/vim-go')
 
 " plugins/70-languages/plugins/tmux/files -------------------
 
