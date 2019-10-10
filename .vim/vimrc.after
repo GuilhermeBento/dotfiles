@@ -26,6 +26,17 @@ augroup spellcheck
     autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 augroup END
 
+" jsonc comments support
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,jsx,js,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
 " for html/rb files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab

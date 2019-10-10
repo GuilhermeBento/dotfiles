@@ -1,0 +1,41 @@
+{
+	"coc.preferences.hoverTarget": "echo",
+	"coc.preferences.enableFloatHighlight": true,
+	"coc.preferences.formatOnType": true,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"go",
+		"typescript",
+		"js",
+		"javascriptreact",
+		"jsx",
+		"json",
+		"jsonc"
+	] /*hacks issue with ts errors*/,
+	"javascript.suggestionActions.enabled": false,
+	"javascript.validate.enable": false,
+	"typescript.suggestionActions.enabled": false,
+	"typescript.validate.enable": false,
+	"prettier.printWidth": 160,
+	"prettier.singleQuote": true,
+	"codeLens.enable": true,
+	"diagnostic.virtualText": true,
+	"diagnostic.checkCurrentLine": true,
+	"signature.target": "echo",
+	"eslint.filetypes": [
+		"jsx",
+		"js",
+		"javascript",
+		"javascriptreact",
+		"typescript"
+	],
+	"snippets.extends": {
+		"javascriptreact": ["javascript", "javascriptreact"],
+		"typescript": ["javascript"]
+	},
+	"list.normalMappings": {
+		"<C-c>": "do:exit"
+	},
+	"list.insertMappings": {
+		"<C-c>": "do:exit"
+	}
+}
