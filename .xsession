@@ -1,3 +1,2 @@
-xrandr --output DP-1 --auto --left-of eDP-1
-xrandr --output DP-1 --set "Broadcast RGB" "Full"
+xrandr --output DP-1 --auto --below eDP-1
 xsetroot -solid "#000000"

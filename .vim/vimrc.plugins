@@ -193,6 +193,9 @@ call dein#add('tpope/vim-surround')
 
 call dein#add('tpope/vim-commentary')
 
+" plugin/vim-css-color
+call dein#add('ap/vim-css-color')
+
 " Plugin tmux navigator
 "
 call dein#add('christoomey/vim-tmux-navigator')
