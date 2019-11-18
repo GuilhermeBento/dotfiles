@@ -24,6 +24,8 @@ exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/google-chrome'
 
 # change workspace to monitor
 bindsym $mod+Ctrl+Shift+Left move workspace to output left
+bindsym $mod+Ctrl+Shift+Up move workspace to output up
+bindsym $mod+Ctrl+Shift+Down move workspace to output down
 bindsym $mod+Ctrl+Shift+Right move workspace to output right
 
 exec $urxvt_transparent -name litevault --hold -e litevault ~/.config/vault -e vim

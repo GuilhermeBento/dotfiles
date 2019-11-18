@@ -14,6 +14,9 @@ sudo apt-get install -y pavucontrol
 sudo apt-get install silversearcher-ag
 sudo apt-get install -y keychain
 sudo apt-get install xclip scrot
+sudo apt-get install git
+sudo apt-get install py3status
+sudo apt-get install -y openvpn
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/installer.sh
 sh ~/.vim/installer.sh dein
