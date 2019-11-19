@@ -28,15 +28,13 @@ bindsym $mod+Ctrl+Shift+Up move workspace to output up
 bindsym $mod+Ctrl+Shift+Down move workspace to output down
 bindsym $mod+Ctrl+Shift+Right move workspace to output right
 
-exec $urxvt_transparent -name litevault --hold -e litevault ~/.config/vault -e vim
-for_window [title="^litevault"] move to scratchpad
+for_window [title="^slack"] move to scratchpad
 
 # set up screen lock
 exec xautolock -time 11 -locker "i3lock -c 000000"
 bindsym $mod+Ctrl+l exec i3lock -c 000000
 bindsym $mod+p exec echo "ok" >> "/home/garrett/.local/novault.lock"
 
-bindsym $mod+Shift+p [title="^litevault"] scratchpad show
 bindsym $mod+q move scratchpad
 bindsym $mod+a scratchpad show
 
