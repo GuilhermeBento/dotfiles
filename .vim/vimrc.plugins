@@ -145,9 +145,6 @@ let g:fzf_buffers_jump = 1
 " [[B]Commits] Customize the options used by 'git log':
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
-" [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R'
-
 " plugins/50-fuzzy-tools/plugins/02-fzf/install.sh -------------------
 
 set rtp+=~/.fzf
@@ -163,10 +160,6 @@ nmap <leader>k :Ag<space>
 " plugins/50-fuzzy-tools/plugins/40-fuzzy-lines/fzf -------------------
 
 nmap <leader>l :Lines<cr>
-
-" plugins/50-fuzzy-tools/plugins/50-fuzzy-tags/fzf -------------------
-
-nmap <leader>t :Tags<cr>
 
 call dein#add('mattn/emmet-vim')
 
