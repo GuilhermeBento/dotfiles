@@ -33,6 +33,8 @@ call dein#add('vim-scripts/greplace.vim')
 
 call dein#add('sjl/gundo.vim')
 
+" plugins/vim-tsx-jsx
+
 let g:gundo_close_on_revert = 1
 
 nmap <leader>u :GundoToggle<CR>
@@ -94,7 +96,11 @@ nmap <leader>o :Utl <space>
 " plugins/30-general/plugins/xterm-color-table/files -------------------
 call dein#add("drewtempelmeyer/palenight.vim")
 
+" plugins/coc
 call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})
+
+" coc extensions
+let g:coc_global_extensions = ['coc-eslint', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 
 if executable('ag')
   let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '-g', '']
