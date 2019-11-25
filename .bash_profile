@@ -5,7 +5,7 @@ export PATH="$HOME/bin:$PATH";
 export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
 
 # Flush Bash_history After Each Command
-export PROMPT_COMMAND='history -a'
+export PROMPT_COMMAND='history -a; history -n'
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
