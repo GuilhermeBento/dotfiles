@@ -19,8 +19,19 @@ set $urxvt_transparent urxvt -tr +sb -fg green -bg black -tint white -sh 75 -fad
 #set $mod Mod4
 
 # setup workspace
-exec --no-startup-id i3-msg 'workspace 1; exec urxvt'
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/gnome-terminal'
+workspace 1 output eDP-1
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/gnome-terminal'
+workspace 2 output eDP-1
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/google-chrome'
+workspace 3 output DP-2
+exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/google-chrome'
+workspace 4 output DP-2
+exec --no-startup-id i3-msg 'workspace 8; exec /usr/bin/slack'
+exec --no-startup-id i3-msg 'workspace 8; exec /usr/bin/teams'
+workspace 8 output eDP-1
+exec --no-startup-id i3-msg 'workspace 9; exec /usr/bin/thunderbird'
+workspace 8 output eDP-1
 
 # change workspace to monitor
 bindsym $mod+Ctrl+Shift+Left move workspace to output left

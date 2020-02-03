@@ -21,6 +21,7 @@ alias j="jobs"
 alias top="top -o %CPU"
 
 # Path shortucts
+alias reportApp="cd /home/guilherme/repos/reportapp/src/ReportApp"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
