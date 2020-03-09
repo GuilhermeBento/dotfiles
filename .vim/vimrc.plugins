@@ -94,7 +94,7 @@ call dein#add('vim-scripts/utl.vim')
 nmap <leader>o :Utl <space>
 
 " plugins/30-general/plugins/xterm-color-table/files -------------------
-call dein#add("drewtempelmeyer/palenight.vim")
+call dein#add("fatih/molokai")
 
 " plugins/coc
 call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})

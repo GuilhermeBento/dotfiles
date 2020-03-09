@@ -246,7 +246,7 @@ let NERDTreeShowHidden=1
 
 " Use the Solarized Dark theme
 set background=dark
-colorscheme palenight
+colorscheme molokai
 
 let g:solarized_termtrans=1
 " Make Vim more useful
