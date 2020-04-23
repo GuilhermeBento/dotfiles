@@ -9,7 +9,8 @@
 		"javascriptreact",
 		"jsx",
 		"json",
-		"jsonc"
+		"jsonc",
+		"py"
 	] /*hacks issue with ts errors disable for now and use eslint only*/,
 	"javascript.suggestionActions.enabled": false,
 	"javascript.validate.enable": false,
