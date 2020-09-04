@@ -109,6 +109,8 @@ command -v grunt > /dev/null && alias grunt="grunt --stack"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
+alias reloadxrandr="xrandr -s 0"
+alias reloadi3="i3-msg reload && i3-msg restart"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'

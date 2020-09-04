@@ -52,6 +52,7 @@ set wildmenu            " enhanced command completion
 set visualbell          " use visual bell instead of beeping
 set laststatus=2        " always show the status line
 " set listchars=tab:▷⋅,trail:·,eol:$
+set listchars=tab:▸\ ,eol:¬,trail:.,extends:#,nbsp:.
 " set listchars=tab:▷⋅,trail:·
 " set list
 
