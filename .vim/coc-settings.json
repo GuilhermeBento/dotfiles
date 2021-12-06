@@ -1,5 +1,4 @@
 {
-	"coc.preferences.hoverTarget": "echo",
 	"coc.preferences.enableFloatHighlight": true,
 	"coc.preferences.formatOnType": false,
 	"coc.preferences.formatOnSaveFiletypes": [
@@ -40,5 +39,14 @@
 	},
 	"list.insertMappings": {
 		"<C-c>": "do:exit"
+	},
+	"coc.preferences.extensionUpdateCheck": "daily",
+	"languageserver": {
+		"bash": {
+			"command": "bash-language-server",
+			"args": ["start"],
+			"filetypes": ["sh"],
+			"ignoredRootPaths": ["~"]
+		}
 	}
 }
