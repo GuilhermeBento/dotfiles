@@ -13,8 +13,9 @@
 	] /*hacks issue with ts errors disable for now and use eslint only*/,
 	"javascript.suggestionActions.enabled": false,
 	"javascript.validate.enable": false,
-	"typescript.suggestionActions.enabled": false,
-	"typescript.validate.enable": false,
+	"tsserver.enable": true,
+	"typescript.suggestionActions.enabled": true,
+	"typescript.validate.enable": true,
 	"javascript.suggest.autoImports": true,
 	"suggest.snippetIndicator": "►",
 	"prettier.printWidth": 160,
@@ -23,13 +24,9 @@
 	"diagnostic.virtualText": true,
 	"diagnostic.checkCurrentLine": true,
 	"signature.target": "echo",
-	"eslint.filetypes": [
-		"jsx",
-		"js",
-		"javascript",
-		"javascriptreact",
-		"typescript"
-	],
+	"tailwindCSS.cssLanguages": ["css", "postcss", "scss"],
+	"tailwindCSS.trace.server": "verbose",
+	"eslint.format.enable": true,
 	"snippets.extends": {
 		"javascriptreact": ["javascript", "javascriptreact"],
 		"typescript": ["javascript"]
