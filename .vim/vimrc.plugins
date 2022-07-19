@@ -196,8 +196,12 @@ call dein#add('tpope/vim-commentary')
 call dein#add('ap/vim-css-color')
 
 " Plugin tmux navigator
-"
+
 call dein#add('christoomey/vim-tmux-navigator')
+
+" Plugin snippets
+call dein#add('SirVer/ultisnips')
+call dein#add('mlaursen/vim-react-snippets')
 
 " plugins/99-final/plugins/10-local-configs/files -------------------
 
