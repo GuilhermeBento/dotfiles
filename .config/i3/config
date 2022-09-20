@@ -18,6 +18,9 @@ set $urxvt_transparent urxvt -tr +sb -fg green -bg black -tint white -sh 75 -fad
 # Mod=Windows Key
 #set $mod Mod4
 
+# Start rofi
+bindsym $mod+semicolon exec rofi -show drun -columns 3
+
 # setup workspace
 exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/gnome-terminal'
 workspace 1 output eDP-1
@@ -27,7 +30,7 @@ exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/google-chrome'
 workspace 3 output DP-2
 exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/google-chrome'
 workspace 4 output DP-2
-exec --no-startup-id i3-msg 'workspace 8; exec /usr/bin/slack'
+exec --no-startup-id i3-msg 'workspace 8; exec /snap/bin/slack'
 workspace 8 output eDP-1
 
 # change workspace to monitor
@@ -67,7 +70,7 @@ bindsym $mod+Shift+t exec $urxvt_transparent
 bindsym $mod+d kill
 
 # start dmenu (a program launcher)
-bindsym $mod+semicolon exec dmenu_run
+# bindsym $mod+semicolon exec dmenu_run
 
 # change focus
 bindsym $mod+h focus left
