@@ -1,5 +1,8 @@
 {
-	"coc.preferences.enableFloatHighlight": true,
+	"importCost.showCalculatingDecoration": true,
+	"importCost.bundleSizeDecoration": "both",
+	"importCost.typescriptExtensions": ["\\.tsx?$"],
+	"importCost.debug": true,
 	"coc.preferences.formatOnType": false,
 	"coc.preferences.formatOnSaveFiletypes": [
 		"go",
@@ -24,13 +27,8 @@
 	"diagnostic.virtualText": true,
 	"diagnostic.checkCurrentLine": true,
 	"signature.target": "echo",
-	"tailwindCSS.cssLanguages": ["css", "postcss", "scss"],
 	"tailwindCSS.trace.server": "verbose",
 	"eslint.format.enable": true,
-	"snippets.extends": {
-		"javascriptreact": ["javascript", "javascriptreact"],
-		"typescript": ["javascript"]
-	},
 	"list.normalMappings": {
 		"<C-c>": "do:exit"
 	},

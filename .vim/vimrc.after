@@ -46,6 +46,7 @@ autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 
 au FileType python setl sw=2 sts=2 et
 au FileType scss setl sw=2 sts=2 et
+autocmd FileType scss setl iskeyword+=@-@
 au Filetype javascript setl ts=2 sw=2 sts=0 expandtab
 au FileType javascript.jsx setl ts=2 sw=2 sts=0 expandtab commentstring={/*\ %s\ */}
 "
