@@ -12,8 +12,8 @@ if !has('nvim')
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
 endif
-call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
-call dein#add('Shougo/deoplete.nvim')
+" call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+" call dein#add('Shougo/deoplete.nvim')
 
 source ~/.vim/vimrc.plugins
 
@@ -27,6 +27,10 @@ if dein#check_install()
 endif
 
 " plugins/20-settings/files -------------------
+
+" Use the Solarized Dark theme
+set background=dark
+colorscheme codedark
 
 syntax enable
 
@@ -253,17 +257,16 @@ let g:vim_json_syntax_conceal = 0
 " plugins/NerdTree
 let NERDTreeShowHidden=1
 
-" Use the Solarized Dark theme
-set background=dark
-colorscheme codedark
-
 let g:solarized_termtrans=1
 " Make Vim more useful
 set nocompatible
 " Enhance command-line completion
 set wildmenu
 " Allow cursor keys in insert mode
-set esckeys
+if has('nvim')
+else
+  set esckeys
+endif
 " Allow backspace in insert mode
 set backspace=indent,eol,start
 " Optimize for fast terminal connections

@@ -1,3 +1,5 @@
+" Test area
+call dein#add('ashisha/image.vim')
 
 " plugins/10-init/files -------------------
 
