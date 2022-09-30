@@ -153,5 +153,6 @@ alias herr='tail /var/log/httpd/error_log'              # herr:             Tail
 alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:   Shows apache error logs
 httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
 
-alias vi='vim'
+alias vi='nvim'
+alias vim='nvim'
 alias ctags='ctags -R --exclude=.git --exclude=node_modules --exclude=tests --exclude=*.css'
