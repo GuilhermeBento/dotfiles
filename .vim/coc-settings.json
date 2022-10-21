@@ -1,7 +1,5 @@
 {
-	"importCost.showCalculatingDecoration": true,
-	"importCost.bundleSizeDecoration": "both",
-	"importCost.typescriptExtensions": ["\\.tsx?$"],
+	"importCost.typescriptExtensions": ["\\.ts*?$"],
 	"importCost.debug": true,
 	"coc.preferences.formatOnType": false,
 	"coc.preferences.formatOnSaveFiletypes": [
