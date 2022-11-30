@@ -1,2 +1,2 @@
-xrandr --output DP-1 --auto --below eDP-1
+xrandr --output HDMI-1 --auto --left-of eDP-1
 xsetroot -solid "#000000"

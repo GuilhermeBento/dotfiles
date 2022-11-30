@@ -154,7 +154,7 @@
 
 [merge]
   tool = vimdiff
-  conflictstyle = diff3
+  conflictstyle = diff2
 	log = true
 [difftool]
   prompt = false
