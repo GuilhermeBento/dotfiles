@@ -49,7 +49,7 @@ fi;
 # Add profile with rvm configs
 source ~/.profile
 
-# source "${HOME}/.bash_completion_custom/alacritty"
+source "${HOME}/.bash_completion_custom/alacritty"
 
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
