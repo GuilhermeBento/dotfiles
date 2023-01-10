@@ -104,7 +104,7 @@ call dein#add("tomasiser/vim-code-dark")
 call dein#add('neoclide/coc.nvim', {'rev': 'release'})
 
 " coc extensions
-let g:coc_global_extensions = ['coc-eslint', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-snippets', 'coc-pairs', 'coc-import-cost']
+let g:coc_global_extensions = ['coc-eslint', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-snippets', 'coc-pairs', 'coc-import-cost']
 
 if executable('ag')
   let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '-g', '']
