@@ -16,7 +16,7 @@
 	"javascript.validate.enable": false,
 	"tsserver.enable": true,
 	"tsserver.useLocalTsdk": true,
-	"tsserver.tsdk": "${workspaceFolder}/node_modules/typescript/lib"
+	"tsserver.tsdk": "${workspaceFolder}/node_modules/typescript/lib",
 	"typescript.suggestionActions.enabled": true,
 	"typescript.validate.enable": true,
 	"javascript.suggest.autoImports": true,
@@ -27,7 +27,6 @@
 	"diagnostic.virtualText": true,
 	"diagnostic.checkCurrentLine": true,
 	"signature.target": "echo",
-	"tailwindCSS.trace.server": "verbose",
 	"eslint.format.enable": true,
 	"list.normalMappings": {
 		"<C-c>": "do:exit"
