@@ -445,12 +445,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " let g:UltiSnipsExpandTrigger='<c-space>'
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
-
-let g:copilot_filetypes = {
-    \ 'gitcommit': v:true,
-    \ 'markdown': v:true,
-    \ 'json': v:true
-    \ } Copilot
 imap <silent> <C-j> <Plug>(copilot-next)
 imap <silent> <C-k> <Plug>(copilot-previous)
 imap <silent> <C-\> <Plug>(copilot-dismiss)
