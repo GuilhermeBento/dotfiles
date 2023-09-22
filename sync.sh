@@ -10,6 +10,7 @@ rsync --exclude ".git/" \
   		--exclude ".osx" \
   		--exclude "bootstrap.sh" \
   		--exclude "sync.sh" \
+  		--exclude ".vim/dein/*" \
   		--exclude "README.md" \
   		--exclude "LICENSE-MIT.txt" \
   		-avh --no-perms . ~;

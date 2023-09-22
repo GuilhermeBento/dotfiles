@@ -35,9 +35,9 @@ call dein#add('mhinz/vim-signify')
 " call dein#add("jparise/vim-graphql")
 
 " Ctrl-P to Display the file browser tree
-nmap <C-P> :NERDTreeTabsToggle<CR>
+nmap <C-P> :NERDTreeToggle<CR>
 " ,p to show current file in the tree
-nmap <leader>p :NERDTreeFind<CR>
+nmap <leader>p :NERDTree<CR>
 
 " ,/ to invert comment on the current line/selection
 nmap <leader>/ :call NERDComment(0, "invert")<cr>
@@ -112,7 +112,7 @@ set rtp+=~/.fzf
 
 " plugins/50-fuzzy-tools/plugins/10-fuzzy-files/fzf -------------------
 
-nmap <leader>, :Files<cr>
+nmap <leader>, :FZF<CR>
 
 " plugins/50-fuzzy-tools/plugins/40-ag/files -------------------
 
