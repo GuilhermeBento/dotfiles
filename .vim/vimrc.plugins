@@ -48,13 +48,6 @@ vmap <leader>/ :call NERDComment(0, "invert")<cr>
 " replacement for the repeat mapping (.) to support plugins
 call dein#add('tpope/vim-repeat')
 
-" plugins/xolox/vim-notes
-
-call dein#add('xolox/vim-notes')
-
-" Set notes store directories
-let g:notes_directories = ['~/Google Drive/vimNotes', '~/Documents/Notes']
-
 " plugins/30-general/plugins/xterm-color-table/files -------------------
 call dein#add("tomasiser/vim-code-dark")
 

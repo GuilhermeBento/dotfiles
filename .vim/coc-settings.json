@@ -30,6 +30,7 @@
 	"diagnostic.checkCurrentLine": true,
 	"signature.target": "echo",
 	"eslint.format.enable": true,
+	"eslint.autoFixOnSave": true,
 	"list.normalMappings": {
 		"<C-c>": "do:exit"
 	},
