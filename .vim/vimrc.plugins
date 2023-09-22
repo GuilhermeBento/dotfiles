@@ -1,24 +1,16 @@
 " copillot
-let g:copilot_node_command = "~/.nvm/versions/node/v18.16.1/bin/node"
+let g:copilot_node_command = "~/.nvm/versions/node/v18.17.1/bin/node"
 
 " plugins/10-init/files -------------------
 
 call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-call dein#add('Shougo/unite.vim')
 
 " plugins/20-settings/files -------------------
 
 let mapleader = ","
 let maplocalleader = "\\"
 
-" plugins/yardnsm/vim-import-cost
-call dein#add('yardnsm/vim-import-cost')
-" plugins/jiangmiao/auto-pairs
-" call dein#add('jiangmiao/auto-pairs')
-
-" plugins/terryma/vim-multiple-cursors
-call dein#add('terryma/vim-multiple-cursors')
+call dein#add('mg979/vim-visual-multi')
 
 " plugins/30-general/plugins/airline/files -------------------
 
@@ -29,26 +21,8 @@ let g:airline_powerline_fonts=1
 let g:airline_theme='light' " dark simple badwolf solarized solarized2
 set noshowmode
 
-" plugins/30-general/plugins/greplace/files -------------------
-
 call dein#add('vim-scripts/greplace.vim')
-
-" plugins/30-general/plugins/gundo/files -------------------
-
-call dein#add('sjl/gundo.vim')
-
-" plugins/vim-tsx-jsx
-
-let g:gundo_close_on_revert = 1
-
-nmap <leader>u :GundoToggle<CR>
-
-" plugins/30-general/plugins/nerdtools/plugins/nerdtree/files -------------------
-
-call dein#add('scrooloose/nerdtree')
-
-" Tells the NERD tree to respect 'wildignore'.
-let NERDTreeRespectWildIgnore=1
+call dein#add('preservim/nerdtree')
 
 " plugins/30-general/plugins/nerdtools/plugins/nerdtree/plugins/10-nerdtree-git/files -------------------
 
@@ -58,14 +32,8 @@ call dein#add('tpope/vim-fugitive')
 " signify
 call dein#add('mhinz/vim-signify')
 
-" plugins/jparise/vim-graphql
-call dein#add("jparise/vim-graphql")
+" call dein#add("jparise/vim-graphql")
 
-" plugins/30-general/plugins/nerdtools/plugins/nerdtree/plugins/20-nerdtree-tabs/files -------------------
-
-call dein#add('jistr/vim-nerdtree-tabs')
-
-" nerdtree with tqbs
 " Ctrl-P to Display the file browser tree
 nmap <C-P> :NERDTreeTabsToggle<CR>
 " ,p to show current file in the tree
@@ -80,22 +48,12 @@ vmap <leader>/ :call NERDComment(0, "invert")<cr>
 " replacement for the repeat mapping (.) to support plugins
 call dein#add('tpope/vim-repeat')
 
-" plugins/30-general/plugins/session/files -------------------
-
-call dein#add('xolox/vim-misc')
-"
 " plugins/xolox/vim-notes
 
 call dein#add('xolox/vim-notes')
 
 " Set notes store directories
 let g:notes_directories = ['~/Google Drive/vimNotes', '~/Documents/Notes']
-
-" plugins/30-general/plugins/utl/files -------------------
-
-call dein#add('vim-scripts/utl.vim')
-
-nmap <leader>o :Utl <space>
 
 " plugins/30-general/plugins/xterm-color-table/files -------------------
 call dein#add("tomasiser/vim-code-dark")
@@ -104,7 +62,7 @@ call dein#add("tomasiser/vim-code-dark")
 call dein#add('neoclide/coc.nvim', {'rev': 'release'})
 
 " coc extensions
-let g:coc_global_extensions = ['coc-eslint', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-snippets', 'coc-pairs', 'coc-import-cost']
+let g:coc_global_extensions = ['coc-eslint', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-snippets', 'coc-pairs', 'coc-import-cost', 'coc-prettier']
 
 if executable('ag')
   let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '-g', '']
@@ -202,10 +160,6 @@ call dein#add('ap/vim-css-color')
 " Plugin tmux navigator
 
 call dein#add('christoomey/vim-tmux-navigator')
-
-" Plugin snippets
-" call dein#add('SirVer/ultisnips')
-call dein#add('mlaursen/vim-react-snippets')
 
 " plugins/99-final/plugins/10-local-configs/files -------------------
 

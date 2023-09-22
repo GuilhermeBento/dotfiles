@@ -26,6 +26,16 @@ augroup spellcheck
     autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 augroup END
 
+" GC comments
+if exists('g:context#commentstring#table')
+  let g:context#commentstring#table['javascript.jsx'] = {
+              \ 'jsComment' : '// %s',
+              \ 'jsImport' : '// %s',
+              \ 'jsxStatment' : '// %s',
+              \ 'jsxRegion' : '{/*%s*/}',
+              \}
+endif
+
 " jsonc comments support
 autocmd FileType json syntax match Comment +\/\/.\+$+
 

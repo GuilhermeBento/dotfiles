@@ -5,6 +5,8 @@
 	"coc.preferences.formatOnSaveFiletypes": [
 		"go",
 		"typescript",
+		"typescriptreact",
+		"javascript",
 		"js",
 		"javascriptreact",
 		"jsx",
