@@ -19,6 +19,8 @@
 	"tsserver.enable": true,
 	"tsserver.useLocalTsdk": true,
 	"tsserver.tsdk": "${workspaceFolder}/node_modules/typescript/lib",
+	"typescript.preferences.quoteStyle": "single",
+	"typescript.preferences.importModuleSpecifier": "project-relative",
 	"typescript.suggestionActions.enabled": true,
 	"typescript.validate.enable": true,
 	"javascript.suggest.autoImports": true,

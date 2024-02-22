@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+echo "Running connect_headphone.sh at $(date)" >> /tmp/connect_headphone.log
 HEADPHONE='24:29:34:B1:1E:A3'
 bluetoothctl trust $HEADPHONE
 bluetoothctl disconnect $HEADPHONE
