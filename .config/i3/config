@@ -20,7 +20,7 @@ set $urxvt_transparent urxvt -tr +sb -fg green -bg black -tint white -sh 75 -fad
 #set $mod Mod4
 
 # Start rofi
-bindsym $mod+semicolon exec rofi -show drun -columns 3
+bindsym $mod+semicolon exec rofi -window-thumbnail -show-icons -theme Arc-Dark -show drun -columns 3
 
 # setup workspace
 exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/gnome-terminal'
