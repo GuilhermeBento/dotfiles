@@ -17,6 +17,8 @@ sudo apt-get install xclip scrot
 sudo apt-get install git
 sudo apt-get install py3status
 sudo apt-get install -y openvpn
+sudo apt-get install -y rofi
+sudo apt-get install -y i3
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/installer.sh
 sh ~/.vim/installer.sh dein
