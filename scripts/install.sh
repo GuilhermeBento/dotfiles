@@ -14,6 +14,7 @@ sudo apt-get install -y pavucontrol
 sudo apt-get install silversearcher-ag
 sudo apt-get install -y keychain
 sudo apt-get install xclip scrot
+sudo apt-get install libx11-dev libxt-dev
 sudo apt-get install git
 sudo apt-get install -y python3-dev
 sudo apt-get install tcl-dev
