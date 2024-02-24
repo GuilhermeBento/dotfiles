@@ -11,5 +11,7 @@ cd vim/src
             --enable-tclinterp \
             --enable-terminal \
             --enable-nodejsinterp \
+            --enable-clipboard \
+
 make
 sudo make install
