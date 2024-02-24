@@ -15,6 +15,9 @@ sudo apt-get install silversearcher-ag
 sudo apt-get install -y keychain
 sudo apt-get install xclip scrot
 sudo apt-get install git
+sudo apt-get install -y python3-dev
+sudo apt-get install tcl-dev
+sudo apt-get install ruby-dev
 sudo apt-get install py3status
 sudo apt-get install -y openvpn
 sudo apt-get install -y rofi
