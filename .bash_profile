@@ -56,6 +56,8 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 # stack
 export PATH="/home/guilherme/.local/bin:$PATH"
 
+# android
+export ANDROID_HOME=$HOME/Android/Sdk
 
 # start ssh agent with keychain
 eval `keychain --eval --agents ssh id_rsa`

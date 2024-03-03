@@ -7,6 +7,7 @@
 # Mod is ALT key
 set $mod Mod1
 
+exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id exec /usr/bin/i3-dump-log > ~/.config/i3/i3.log 2>&1
 exec --no-startup-id xmodmap -e 'keycode 135 = Super_R' && xset -r 135
 
@@ -193,6 +194,7 @@ bar {
 # }
 
 # Screen shot
-bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
+bindsym --release Print exec scrot -s "$HOME/Pictures/screenshots/screenshot_%Y%m%d_%H%M%S.png" -e 'xclip -verbose -selection clipboard -t image/png -i $f && notify-send "Screenshot taken and copied to clipboard"'
+# bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
 
 bindsym $mod+F9 exec '~/dotfiles/scripts/connect_headphone.sh'
