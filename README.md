@@ -13,7 +13,7 @@ Personal dotfiles for a Linux (Debian/Ubuntu) development environment -- Bash, V
 | **i3** | `.config/i3/config`, `.config/i3status/config` | Tiling WM with vim keys, rofi launcher, maim screenshots, dunst notifications |
 | **Docker** | installed via `scripts/install.sh` | Docker Engine, Compose v2, Buildx; aliases in `.aliases` |
 | **NVM** | loaded in `.bash_profile` | Node version manager with bash completion |
-| **keychain** | loaded in `.bash_profile` | SSH agent management (auto-loads `id_rsa`) |
+| **keychain** | loaded in `.bash_profile` | SSH agent management (auto-loads `id_ed25519`) |
 | **Other** | `.editorconfig`, `.inputrc`, `.curlrc`, `.wgetrc`, `.npmrc` | Editor defaults, readline, curl/wget options |
 
 ## Installation

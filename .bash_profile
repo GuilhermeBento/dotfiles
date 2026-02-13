@@ -41,4 +41,10 @@ fi;
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
 # Start ssh agent with keychain (if installed)
-command -v keychain > /dev/null && eval $(keychain --eval --agents ssh id_rsa)
+# Loads whichever keys exist: ed25519, rsa, or both
+if command -v keychain > /dev/null; then
+	keys=""
+	[ -f ~/.ssh/id_ed25519 ] && keys="$keys id_ed25519"
+	[ -f ~/.ssh/id_rsa ] && keys="$keys id_rsa"
+	[ -n "$keys" ] && eval $(keychain --eval --agents ssh $keys)
+fi
