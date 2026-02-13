@@ -104,6 +104,11 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }          # httpHeaders:  Grabs heade
 
 alias vi='vim'
 
+# SCREENSHOTS (maim + xclip)
+alias ss='maim -s | xclip -selection clipboard -t image/png'    # area screenshot to clipboard
+alias ssf='maim | xclip -selection clipboard -t image/png'      # full screenshot to clipboard
+alias sss='maim -s ~/Pictures/$(date +%s).png'                  # area screenshot to file
+
 # DOCKER
 alias d='docker'
 alias dps='docker ps'

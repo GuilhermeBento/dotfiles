@@ -1,0 +1,71 @@
+configuration {
+	modi: "drun,window,run";
+	show-icons: true;
+	terminal: "i3-sensible-terminal";
+	drun-display-format: "{name}";
+	disable-history: false;
+}
+
+@theme "/dev/null"
+
+* {
+	bg:    #282a36;
+	fg:    #f8f8f2;
+	sel:   #44475a;
+	accent:#6272a4;
+	font:  "monospace 12";
+}
+
+window {
+	background-color: @bg;
+	border:           2px;
+	border-color:     @accent;
+	border-radius:    6px;
+	width:            35%;
+	padding:          0;
+}
+
+mainbox {
+	background-color: @bg;
+	children:         [ inputbar, listview ];
+}
+
+inputbar {
+	background-color: @bg;
+	text-color:       @fg;
+	padding:          12px;
+	children:         [ prompt, entry ];
+}
+
+prompt {
+	background-color: @bg;
+	text-color:       @accent;
+	padding:          0 8px 0 0;
+}
+
+entry {
+	background-color: @bg;
+	text-color:       @fg;
+	placeholder:      "Search...";
+	placeholder-color:@accent;
+}
+
+listview {
+	background-color: @bg;
+	columns:          1;
+	lines:            8;
+	padding:          4px 0;
+	scrollbar:        false;
+}
+
+element {
+	background-color: @bg;
+	text-color:       @fg;
+	padding:          8px 12px;
+}
+
+element selected {
+	background-color: @sel;
+	text-color:       @fg;
+	border-radius:    4px;
+}

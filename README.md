@@ -10,6 +10,7 @@ Personal dotfiles for a Linux (Debian/Ubuntu) development environment -- Bash, V
 | **Vim** | `.vim/vimrc`, `.vim/coc-settings.json` | vim-plug, CoC.nvim (LSP), fzf integration, NERDTree, fugitive, Code Dark theme |
 | **Tmux** | `.tmux.conf` | `C-a` prefix, vi copy mode, xclip clipboard, vim-aware pane navigation |
 | **Git** | `.gitconfig` | Aliases, colors, URL shorthands (`gh:`, `gst:`), vimdiff merge tool |
+| **i3** | `.config/i3/config`, `.config/i3status/config` | Tiling WM with vim keys, rofi launcher, maim screenshots, dunst notifications |
 | **Docker** | installed via `scripts/install.sh` | Docker Engine, Compose v2, Buildx; aliases in `.aliases` |
 | **NVM** | loaded in `.bash_profile` | Node version manager with bash completion |
 | **keychain** | loaded in `.bash_profile` | SSH agent management (auto-loads `id_rsa`) |
@@ -31,6 +32,14 @@ bash scripts/install.sh
 ```
 
 This installs core packages via `apt` (git, curl, vim, tmux, fzf, ripgrep, fd-find, etc.), sets up Docker Engine + Compose v2, hooks `.bash_profile` into `~/.bashrc`, sets up fzf key bindings, and installs Vim plugins.
+
+### 2b. Install i3 (optional)
+
+```bash
+bash scripts/install-i3.sh
+```
+
+This installs i3, rofi, dunst, i3lock, maim, feh, udiskie, pavucontrol, and arandr. After installing, log out and select **i3** from the session menu at the login screen. GNOME stays installed -- switch back anytime.
 
 ### 3. Sync dotfiles to home directory
 
@@ -59,12 +68,18 @@ This pulls the latest changes and uses `rsync` to copy dotfiles into `~`. It wil
 │   ├── colors/         # Color schemes
 │   └── ftplugin/       # Filetype-specific settings
 ├── .gitconfig          # Git configuration
+├── .config/
+│   ├── i3/config       # i3 window manager config
+│   ├── i3status/config # i3 status bar config
+│   ├── rofi/config.rasi# rofi launcher theme
+│   └── dunst/dunstrc   # notification daemon config
 ├── .editorconfig       # EditorConfig defaults
 ├── .curlrc             # curl defaults
 ├── .wgetrc             # wget defaults
 ├── .npmrc              # npm defaults
 ├── scripts/
-│   └── install.sh      # System package installation
+│   ├── install.sh      # System package installation
+│   └── install-i3.sh   # i3 + companion tools (optional)
 ├── notes/
 │   └── QuickTips.md    # Personal reference notes
 └── sync.sh             # Sync dotfiles into ~

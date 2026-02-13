@@ -1,0 +1,160 @@
+# i3 config file (v4)
+# https://i3wm.org/docs/userguide.html
+
+# ── Modifier ────────────────────────────────────────────────────────────
+set $mod Mod4
+
+# ── Font ────────────────────────────────────────────────────────────────
+font pango:monospace 10
+
+# ── Terminal ────────────────────────────────────────────────────────────
+bindsym $mod+Return exec i3-sensible-terminal
+
+# ── Kill focused window ────────────────────────────────────────────────
+bindsym $mod+Shift+q kill
+
+# ── App launcher (rofi) ────────────────────────────────────────────────
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+Tab exec --no-startup-id rofi -show window -show-icons
+
+# ── Screenshots (maim + xclip) ─────────────────────────────────────────
+bindsym $mod+Shift+s exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym $mod+Print exec --no-startup-id maim -s ~/Pictures/$(date +%s).png
+
+# ── Focus ───────────────────────────────────────────────────────────────
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# ── Move windows ────────────────────────────────────────────────────────
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# ── Splits ──────────────────────────────────────────────────────────────
+bindsym $mod+b split h
+bindsym $mod+v split v
+
+# ── Fullscreen ──────────────────────────────────────────────────────────
+bindsym $mod+f fullscreen toggle
+
+# ── Layout ──────────────────────────────────────────────────────────────
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# ── Floating ────────────────────────────────────────────────────────────
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+floating_modifier $mod
+
+# ── Focus parent / child ───────────────────────────────────────────────
+bindsym $mod+a focus parent
+# bindsym $mod+d focus child  # conflicts with rofi
+
+# ── Workspaces ──────────────────────────────────────────────────────────
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# ── Scratchpad ──────────────────────────────────────────────────────────
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# ── Reload / Restart / Exit ────────────────────────────────────────────
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+
+# ── Lock screen ─────────────────────────────────────────────────────────
+bindsym $mod+Escape exec --no-startup-id i3lock -c 000000
+
+# ── Resize mode ─────────────────────────────────────────────────────────
+mode "resize" {
+	bindsym h resize shrink width 5 px or 5 ppt
+	bindsym j resize grow height 5 px or 5 ppt
+	bindsym k resize shrink height 5 px or 5 ppt
+	bindsym l resize grow width 5 px or 5 ppt
+
+	bindsym Left resize shrink width 5 px or 5 ppt
+	bindsym Down resize grow height 5 px or 5 ppt
+	bindsym Up resize shrink height 5 px or 5 ppt
+	bindsym Right resize grow width 5 px or 5 ppt
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# ── Volume (PulseAudio / PipeWire) ─────────────────────────────────────
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# ── Brightness ──────────────────────────────────────────────────────────
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# ── Bar ─────────────────────────────────────────────────────────────────
+bar {
+	status_command i3status
+	position top
+	tray_output primary
+}
+
+# ── Appearance ──────────────────────────────────────────────────────────
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
+gaps inner 6
+gaps outer 0
+
+# ── Autostart ───────────────────────────────────────────────────────────
+exec --no-startup-id dunst
+exec --no-startup-id udiskie --tray
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
