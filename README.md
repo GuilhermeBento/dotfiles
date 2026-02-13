@@ -10,6 +10,7 @@ Personal dotfiles for a Linux (Debian/Ubuntu) development environment -- Bash, V
 | **Vim** | `.vim/vimrc`, `.vim/coc-settings.json` | vim-plug, CoC.nvim (LSP), fzf integration, NERDTree, fugitive, Code Dark theme |
 | **Tmux** | `.tmux.conf` | `C-a` prefix, vi copy mode, xclip clipboard, vim-aware pane navigation |
 | **Git** | `.gitconfig` | Aliases, colors, URL shorthands (`gh:`, `gst:`), vimdiff merge tool |
+| **Docker** | installed via `scripts/install.sh` | Docker Engine, Compose v2, Buildx; aliases in `.aliases` |
 | **NVM** | loaded in `.bash_profile` | Node version manager with bash completion |
 | **keychain** | loaded in `.bash_profile` | SSH agent management (auto-loads `id_rsa`) |
 | **Other** | `.editorconfig`, `.inputrc`, `.curlrc`, `.wgetrc`, `.npmrc` | Editor defaults, readline, curl/wget options |
@@ -29,7 +30,7 @@ cd ~/apps/dotfiles
 bash scripts/install.sh
 ```
 
-This installs core packages via `apt` (git, curl, vim, tmux, fzf, ripgrep, fd-find, etc.), hooks `.bash_profile` into `~/.bashrc`, sets up fzf key bindings, and installs Vim plugins.
+This installs core packages via `apt` (git, curl, vim, tmux, fzf, ripgrep, fd-find, etc.), sets up Docker Engine + Compose v2, hooks `.bash_profile` into `~/.bashrc`, sets up fzf key bindings, and installs Vim plugins.
 
 ### 3. Sync dotfiles to home directory
 
