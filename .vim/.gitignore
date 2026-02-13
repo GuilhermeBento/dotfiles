@@ -1,8 +1,1 @@
-
-# plugins/10-init/files -------------------
-
-dein
-src
-.config.new
-sessions
-undo
+plugged/

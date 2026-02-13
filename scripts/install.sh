@@ -16,7 +16,9 @@ sudo apt-get install -y \
 	tree \
 	jq \
 	htop \
-	build-essential
+	build-essential \
+	nodejs \
+	npm
 
 # Hook custom dotfiles into the system .bashrc (non-destructive)
 HOOK='[ -f ~/.bash_profile ] && source ~/.bash_profile'
@@ -36,3 +38,8 @@ if ! grep -qF "fzf/examples/key-bindings" ~/.bashrc 2>/dev/null; then
 	echo '[ -f /usr/share/doc/fzf/examples/completion.bash ] && source /usr/share/doc/fzf/examples/completion.bash' >> ~/.bashrc
 	echo "Hooked fzf into .bashrc"
 fi
+
+# Install vim plugins (vim-plug auto-installs, then runs PlugInstall)
+echo "Installing Vim plugins..."
+vim +PlugInstall +qall 2>/dev/null
+echo "Vim plugins installed."

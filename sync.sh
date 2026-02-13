@@ -12,7 +12,7 @@ rsync --exclude ".git/" \
 		--exclude "LICENSE-MIT.txt" \
 		--exclude "notes/" \
 		--exclude "scripts/" \
-		--exclude ".vim/dein/*" \
+		--exclude ".vim/plugged/*" \
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
 }
