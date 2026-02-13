@@ -7,21 +7,13 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"
 
-#important
-alias starwars="telnet towel.blinkenlights.nl"
-
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
-alias top="top -o %CPU"
-
-# Path shortucts
-alias reportApp="cd /home/guilherme/repos/reportapp/src/ReportApp"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -50,7 +42,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Enable aliases to be sudo’ed
+# Enable aliases to be sudo'ed
 alias sudo='sudo '
 
 # Get week number
@@ -60,99 +52,54 @@ alias week='date +%V'
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-
-# Show active network interfaces
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
-
-# Flush Directory Service cache
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
-# Clean up LaunchServices to remove duplicates in the “Open With” menu
-alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="hostname -I | awk '{print \$1}'"
+alias ips="command ip -o addr show | awk '/inet / {print \$2, \$4}'"
 
 # View HTTP traffic
 alias sniff="sudo ngrep -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias httpdump="sudo tcpdump -i any -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
-
-# JavaScriptCore REPL
-jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc";
-[ -e "${jscbin}" ] && alias jsc="${jscbin}";
-unset jscbin;
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | xclip -sel clip"
 alias copy="xclip -sel clip"
 
-# Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
 # URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urlencode='python3 -c "import sys, urllib.parse; print(urllib.parse.quote_plus(sys.argv[1]));"'
 
-# Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
-# (useful when executing time-consuming commands)
+# Ring the terminal bell (useful when executing time-consuming commands)
 alias badge="tput bel"
-
-# One of @janmoesen’s ProTip™s
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "$method"="lwp-request -m '$method'"
-done
-
-# Make Grunt print stack traces by default
-command -v grunt > /dev/null && alias grunt="grunt --stack"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
-alias reloadxrandr="xrandr -s 0"
-alias reloadi3="i3-msg reload && i3-msg restart"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
 # NETWORKING
-
-alias myip='curl ip.appspot.com'                    # myip:         Public facing IP Address
+alias myip='curl ifconfig.me'                       # myip:         Public facing IP Address
 alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
-alias flushDNS='dscacheutil -flushcache'            # flushDNS:     Flush out the DNS Cache
 alias lsock='sudo /usr/bin/lsof -i -P'             # lsock:        Display open sockets
 alias lsockU='sudo /usr/bin/lsof -nP | grep UDP'   # lsockU:       Display only open UDP sockets
 alias lsockT='sudo /usr/bin/lsof -nP | grep TCP'   # lsockT:       Display only open TCP sockets
-alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
-alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
 alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
-alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
 
-#   ii:  display useful host related informaton
-#   -------------------------------------------------------------------
-    ii() {
-        echo -e "\nYou are logged on ${RED}$HOST"
-        echo -e "\nAdditionnal information:$NC " ; uname -a
-        echo -e "\n${RED}Users logged on:$NC " ; w -h
-        echo -e "\n${RED}Current date :$NC " ; date
-        echo -e "\n${RED}Machine stats :$NC " ; uptime
-        echo -e "\n${RED}Current network location :$NC " ; scselect
-        echo -e "\n${RED}Public facing IP Address :$NC " ;myip
-        #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
-        echo
-    }
+# System info
+ii() {
+    echo -e "\nYou are logged on ${HOSTNAME}"
+    echo -e "\nAdditional information:" ; uname -a
+    echo -e "\nUsers logged on:" ; w -h
+    echo -e "\nCurrent date:" ; date
+    echo -e "\nMachine stats:" ; uptime
+    echo -e "\nPublic facing IP Address:" ; curl -s ifconfig.me
+    echo
+}
 
-# ------------------
 # WEB DEVELOPMENT
-# ------------------
-
-alias apacheEdit='sudo edit /etc/httpd/httpd.conf'      # apacheEdit:       Edit httpd.conf
-alias apacheRestart='sudo apachectl graceful'           # apacheRestart:    Restart Apache
-alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit /etc/hosts file
-alias herr='tail /var/log/httpd/error_log'              # herr:             Tails HTTP error logs
-alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:   Shows apache error logs
-httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
+alias editHosts='sudo ${EDITOR:-vim} /etc/hosts'    # editHosts:    Edit /etc/hosts file
+httpHeaders () { /usr/bin/curl -I -L $@ ; }          # httpHeaders:  Grabs headers from web page
 
 alias vi='vim'
-alias vim='vim'
-alias ctags='ctags -R --exclude=.git --exclude=node_modules --exclude=tests --exclude=*.css'
