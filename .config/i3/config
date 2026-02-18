@@ -28,10 +28,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# Arrow keys: resize on the fly (hjkl for focus, arrows for resize)
+bindsym $mod+Left resize shrink width 5 px or 5 ppt
+bindsym $mod+Down resize grow height 5 px or 5 ppt
+bindsym $mod+Up resize shrink height 5 px or 5 ppt
+bindsym $mod+Right resize grow width 5 px or 5 ppt
 
 # ── Move windows ────────────────────────────────────────────────────────
 bindsym $mod+Shift+h move left
@@ -174,7 +175,10 @@ workspace $ws10 output HDMI-1-0
 # Caps Lock → Backspace
 exec --no-startup-id setxkbmap -option caps:backspace
 
+assign [class="Slack"] $ws1
+
 # ── Autostart ───────────────────────────────────────────────────────────
 exec --no-startup-id dunst
 exec --no-startup-id udiskie --tray
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+exec --no-startup-id slack
