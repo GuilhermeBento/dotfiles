@@ -6,7 +6,7 @@ sudo apt-get install -y \
 	git \
 	curl \
 	python3 \
-	vim \
+	vim-nox \
 	tmux \
 	keychain \
 	xclip \
