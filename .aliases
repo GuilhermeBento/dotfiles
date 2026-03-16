@@ -5,7 +5,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias -- '-=cd -'
+# alias -="cd -"  # Not needed, `cd -` already works in bash
 
 # Shortcuts
 alias dl="cd ~/Downloads"
