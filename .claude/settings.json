@@ -1,5 +1,10 @@
 {
   "preferences": {
     "editorMode": "vim"
-  }
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "language": "english"
 }
