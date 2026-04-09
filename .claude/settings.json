@@ -6,5 +6,17 @@
     "commit": "",
     "pr": ""
   },
-  "language": "english"
+  "language": "english",
+  "permissions": {
+    "allow": [
+      "Read(/home/platinium/job/sga-casinos/**)",
+      "Read(/home/platinium/job/argon-api/**)",
+      "Read(/home/platinium/job/argon/**)",
+      "Read(/home/platinium/apps/dotfiles/**)",
+      "Edit(/home/platinium/job/sga-casinos/**)",
+      "Edit(/home/platinium/job/argon-api/**)",
+      "Edit(/home/platinium/job/argon/**)",
+      "Edit(/home/platinium/apps/dotfiles/**)"
+    ]
+  }
 }
