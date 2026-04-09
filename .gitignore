@@ -38,3 +38,4 @@ tags
 # Logs
 log/
 *.log
+*.local.*
