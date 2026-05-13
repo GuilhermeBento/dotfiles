@@ -239,6 +239,10 @@ nnoremap g# g#zz
 " Disable paste mode when leaving Insert Mode
 au InsertLeave * set nopaste
 
+" Terminal: Esc Esc enters Terminal-Normal mode (for copy, scrollback, yank)
+tnoremap <Esc><Esc> <C-W>N
+autocmd TerminalOpen * setlocal nonumber nospell signcolumn=no
+
 " Fast expand current file's directory in command mode
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 cnoremap %^ <C-R>=expand('%:p:h').'/'<cr>
