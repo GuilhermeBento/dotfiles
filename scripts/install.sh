@@ -18,7 +18,8 @@ sudo apt-get install -y \
 	htop \
 	build-essential \
 	nodejs \
-	npm
+	npm \
+	golang-go
 
 # Hook custom dotfiles into the system .bashrc (non-destructive)
 HOOK='[ -f ~/.bash_profile ] && source ~/.bash_profile'
@@ -72,6 +73,12 @@ if ! command -v docker &>/dev/null; then
 	echo "Docker installed. Log out and back in for group changes to take effect."
 else
 	echo "Docker already installed, skipping."
+fi
+
+# ── Go tools ────────────────────────────────────────────────────────────
+if command -v go &>/dev/null; then
+	echo "Installing Go tools..."
+	go install github.com/d-kuro/gwq/cmd/gwq@latest
 fi
 
 # Install vim plugins (vim-plug auto-installs, then runs PlugInstall)

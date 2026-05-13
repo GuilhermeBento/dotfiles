@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Collapse hard-wrapped prose lines into spaces.
+# Designed for terminal-rendered output (Claude Code, man, less) where prose
+# is indented for visual margin. Strips that margin outside fenced code blocks.
+# Preserves: blank lines (paragraph breaks), fenced ``` blocks, bullet starts.
+awk '
+  {
+    orig = $0
+    line = $0
+    sub(/^[[:space:]]+/, "", line)
+  }
+  /^[[:space:]]*```/ {
+    if (buf != "") { print buf; buf = "" }
+    print orig
+    in_fence = !in_fence
+    next
+  }
+  in_fence { print orig; next }
+  line == "" {
+    if (buf != "") { print buf; buf = "" }
+    print ""
+    next
+  }
+  # Bullet or numbered list item starts a new logical line.
+  # Use alternation (not char class) for multibyte bullets — awk char classes
+  # match byte-wise and would falsely match other E2-prefixed UTF-8 chars (→ etc).
+  line ~ /^(●|•|◦|▪|▸|[*+-] |[0-9]+[.)] )/ {
+    if (buf != "") print buf
+    buf = line
+    next
+  }
+  buf == "" { buf = line; next }
+  { buf = buf " " line }
+  END { if (buf != "") print buf }
+'
