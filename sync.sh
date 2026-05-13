@@ -11,9 +11,9 @@ rsync --exclude ".git/" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
 		--exclude "notes/" \
-		--exclude "scripts/" \
 		--exclude ".vim/plugged/*" \
 		-avh --no-perms . ~;
+	chmod +x ~/scripts/*;
 	source ~/.bash_profile;
 }
 
